@@ -1,45 +1,24 @@
+
 """
 ================================================================================
 MODUL GENERATOR KONTEKS OPERASIONAL (SEED TANGGAL & JAM)
-Penanggung Jawab : Anggota 2 (Pendamping Lapisan 2)
+Penanggung Jawab : Anggota 2
 ================================================================================
 
-1. KONSEP & LOGIKA DETERMINISTIK:
-   - Halaman utama aplikasi menampilkan kondisi operasional lapangan secara otomatis
-     (cuaca, kemacetan, estimasi antrean dapur, dan pengalaman rata-rata kurir)
-     tanpa bergantung pada API berbayar.
-   - Nilai seed dibentuk dari Tahun, Bulan, Tanggal, dan Jam (format YYYYMMDDHH,
-     contoh: 2026112112 untuk 21 November 2026 pukul 12.00) sehingga:
-     * Selama masih di jam yang sama, hasil tidak berubah saat halaman di-refresh.
-     * Saat berganti jam atau tanggal, kondisi otomatis menyesuaikan pola jam sibuk:
-       - Jam sibuk makan siang (11.00-14.00) & makan malam (17.00-20.00):
-         peluang kemacetan High & antrean dapur lebih tinggi.
-       - Jam normal (06.00-22.00 di luar jam sibuk): lalu lintas dominan Low/Medium.
-       - Jam dini hari (23.00-05.00): lalu lintas dominan Low & antrean dapur singkat.
+Menghasilkan simulasi kondisi operasional pengantaran makanan
+secara deterministik berdasarkan tanggal dan jam.
 
-2. KONTRAK INPUT & OUTPUT FUNGSI:
-   - get_current_operational_context(custom_dt=None)
-     * Input  : custom_dt (objek datetime opsional; jika None gunakan datetime.now())
-     * Output : dictionary wajib berisi 6 kunci berikut:
-                {
-                    "timestamp_str"          : str (contoh: "21 November 2026, Pukul 12:00"),
-                    "seed"                   : int (contoh: 2026112112),
-                    "Weather"                : str ("Clear"|"Windy"|"Foggy"|"Rainy"|"Snowy"),
-                    "Traffic_Level"          : str ("Low"|"Medium"|"High"),
-                    "Preparation_Time_min"   : float (contoh: 18.0),
-                    "Courier_Experience_yrs" : float (contoh: 3.5),
-                }
+Fungsi:
+get_current_operational_context(custom_dt=None)
 
-3. INSTRUKSI PENGERJAAN (TODO):
-   [ ] TODO 1: Ambil waktu referensi (`now = custom_dt if custom_dt is not None else datetime.now()`).
-   [ ] TODO 2: Ubah waktu tersebut menjadi integer seed `int(now.strftime("%Y%m%d%H"))`
-               dan inisialisasi generator acak `rng = np.random.default_rng(seed_value)`.
-   [ ] TODO 3: Buat percabangan berdasarkan `now.hour` untuk mengatur probabilitas
-               kemacetan (`traffic_probs`) dan rentang waktu masak dapur (`prep_base`).
-   [ ] TODO 4: Pilih `Traffic_Level` dan `Weather` menggunakan `rng.choice(...)`,
-               serta bangkitkan `Courier_Experience_yrs` menggunakan `rng.uniform(...)`.
-   [ ] TODO 5: Kembalikan dictionary dengan 6 nama kunci yang persis sama dengan
-               spesifikasi di atas agar langsung terbaca oleh Tab 1 pada app.py.
+Output:
+Dictionary berisi:
+- timestamp_str
+- seed
+- Weather
+- Traffic_Level
+- Preparation_Time_min
+- Courier_Experience_yrs
 ================================================================================
 """
 
@@ -48,5 +27,88 @@ import numpy as np
 
 
 def get_current_operational_context(custom_dt=None):
-  # TODO: Implementasikan pembangkitan kondisi cuaca, kemacetan, dapur & kurir berbasis seed
-  pass
+    """
+    Menghasilkan kondisi operasional berdasarkan seed tanggal dan jam.
+
+    Parameters
+    ----------
+    custom_dt : datetime, optional
+        Waktu simulasi yang dapat ditentukan secara manual.
+        Jika None, menggunakan waktu sekarang.
+
+    Returns
+    -------
+    dict
+        Informasi kondisi operasional.
+    """
+
+    # 1. Mengambil waktu referensi
+    now = custom_dt if custom_dt is not None else datetime.now()
+
+    if not isinstance(now, datetime):
+        raise TypeError("custom_dt harus berupa objek datetime atau None.")
+
+    # 2. Membuat seed berdasarkan tahun, bulan, tanggal, dan jam
+    seed_value = int(now.strftime("%Y%m%d%H"))
+
+    # Generator acak deterministik
+    rng = np.random.default_rng(seed_value)
+
+    hour = now.hour
+
+    # 3. Mengatur probabilitas berdasarkan waktu operasional
+    # Jam sibuk makan siang dan makan malam
+    if 11 <= hour <= 14 or 17 <= hour <= 20:
+        traffic_probs = [0.15, 0.45, 0.40]
+        prep_base = (15.0, 28.0)
+
+    # Jam operasional normal
+    elif 6 <= hour <= 22:
+        traffic_probs = [0.45, 0.40, 0.15]
+        prep_base = (8.0, 18.0)
+
+    # Jam dini hari
+    else:
+        traffic_probs = [0.75, 0.20, 0.05]
+        prep_base = (5.0, 12.0)
+
+    traffic_level = rng.choice(
+        ["Low", "Medium", "High"],
+        p=traffic_probs
+    )
+
+    weather = rng.choice(
+        ["Clear", "Windy", "Foggy", "Rainy", "Snowy"],
+        p=[0.50, 0.20, 0.10, 0.18, 0.02]
+    )
+
+    preparation_time = rng.uniform(
+        prep_base[0], prep_base[1]
+    )
+
+    courier_experience = rng.uniform(1.0, 7.5)
+
+
+    # 5. Format tanggal dalam Bahasa Indonesia
+    nama_bulan = [
+        "Januari", "Februari", "Maret", "April",
+        "Mei", "Juni", "Juli", "Agustus",
+        "September", "Oktober", "November", "Desember"
+    ]
+
+    timestamp_str = (
+        f"{now.day} {nama_bulan[now.month - 1]} {now.year}, "
+        f"Pukul {now.strftime('%H:%M')}"
+    )
+
+    # 6. Mengembalikan dictionary sesuai kontrak app.py
+    context = {
+        "timestamp_str": timestamp_str,
+        "seed": seed_value,
+        "Weather": str(weather),
+        "Traffic_Level": str(traffic_level),
+        "Preparation_Time_min": round(float(preparation_time), 2),
+        "Courier_Experience_yrs": round(float(courier_experience), 2)
+    }
+
+    return context
