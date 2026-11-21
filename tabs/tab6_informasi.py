@@ -54,6 +54,19 @@ def render_tab6_informasi():
                 "q (Konstanta)",
             ],
         )
+
+        # tampilkan label kondisi premis jika atribut model.rules tersedia
+        if hasattr(model, "rules") and model.rules is not None:
+            premis_labels = [
+                ", ".join(
+                    f"{col.split('_')[0]}={'Rendah' if val == 0 else 'Tinggi'}"
+                    for col, val in zip(FEATURE_COLS, rule)
+                )
+                for rule in model.rules
+            ]
+            df_cons.insert(0, "Kondisi Premis (IF)", premis_labels)
+
+
         df_cons.insert(0, "Aturan", [f"Rule {i + 1}" for i in range(model.n_rules)])
         st.dataframe(df_cons, use_container_width=True, hide_index=True)
     else:
