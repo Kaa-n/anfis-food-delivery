@@ -1,0 +1,1818 @@
+<!-- 1. Beranda & Prediksi Utama -->
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1. Beranda &amp; Prediksi Utama — ANFIS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'streamlit-red': '#FF4B4B',
+        'chart-blue': '#1F77B4',
+        'chart-orange': '#FF7F0E',
+        'light-primary': '#C81E2B',
+        'light-on-primary': '#FFFFFF',
+        'light-surface': '#FFFFFF',
+        'light-surface-container-low': '#F0F2F6',
+        'light-surface-container': '#F8F9FB',
+        'light-on-surface': '#31333F',
+        'light-on-surface-variant': '#555867',
+        'light-outline': '#808495',
+        'light-outline-variant': '#E6EAF1',
+        'light-info': '#EBF3FE',
+        'light-on-info': '#0C3B78',
+        'light-info-border': '#BFD6F6',
+        'light-success': '#E7F6EC',
+        'light-on-success': '#0F5132',
+        'light-success-border': '#B7E4C7',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '8px',
+        'lg': '12px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Source Sans 3"', 'sans-serif'],
+        'body': ['"Source Sans 3"', 'sans-serif'],
+        'label': ['"Source Sans 3"', 'sans-serif'],
+        'metric': ['"Source Sans 3"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['34px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'metric-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'mono-sm': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=Source+Code+Pro:wght@400;500&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface text-light-on-surface font-body antialiased" data-stitch-vh="min-h-[1024px]===min-h-screen">
+  <div class="mx-auto px-gutter-xl py-gutter-xl flex flex-col gap-gutter-lg" style="max-width: 1200px;">
+
+    <!-- Top Header Section -->
+    <header class="flex flex-col gap-gutter-xs">
+      <div class="flex items-center gap-gutter-sm">
+        <span class="material-symbols-outlined text-streamlit-red text-[32px] shrink-0" aria-hidden="true">delivery_dining</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-light-on-surface text-balance" data-design-text-token="display-lg">
+          Estimasi Waktu Tiba Pengantaran Makanan Berbasis ANFIS
+        </h1>
+      </div>
+      <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+        Adaptive Neuro-Fuzzy Inference System (5 Input, 2 MF Gaussian, 32 Aturan Sugeno Orde-1)
+      </p>
+    </header>
+
+    <!-- Horizontal Streamlit Tab Bar -->
+    <nav aria-label="Navigasi Utama ANFIS">
+      <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon" class="w-full">
+        <div role="tablist" aria-label="Halaman Aplikasi ANFIS" class="flex items-center gap-gutter-lg border-b border-light-outline-variant overflow-x-auto">
+          <a href="../tab-1-beranda-prediksi/BerandaPrediksi.html" role="tab" aria-selected="true" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-streamlit-red text-light-primary font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">home</span>
+            <span data-design-text-token="label-md">1. Beranda &amp; Prediksi Utama</span>
+          </a>
+          <a href="../tab-2-dataset-preprocessing/DatasetPreprocessing.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">database</span>
+            <span data-design-text-token="label-md">2. Dataset &amp; Preprocessing</span>
+          </a>
+          <a href="../tab-3-pelatihan-model/PelatihanModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">model_training</span>
+            <span data-design-text-token="label-md">3. Pelatihan Model (Training)</span>
+          </a>
+          <a href="../tab-4-simulasi-5-lapisan/Simulasi5Lapisan.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">tune</span>
+            <span data-design-text-token="label-md">4. Simulasi &amp; Inspeksi 5 Lapisan</span>
+          </a>
+          <a href="../tab-5-evaluasi-model/EvaluasiModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">analytics</span>
+            <span data-design-text-token="label-md">5. Evaluasi Model</span>
+          </a>
+          <a href="../tab-6-informasi-sistem/InformasiSistem.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+            <span data-design-text-token="label-md">6. Informasi Sistem &amp; 32 Aturan</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content inside Tab 1 -->
+    <main class="flex flex-col gap-gutter-lg pt-gutter-xs">
+
+      <!-- 1. Section Deskripsi & Tujuan Sistem -->
+      <section class="flex flex-col gap-gutter-sm">
+        <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+          Deskripsi &amp; Tujuan Sistem
+        </h2>
+        <p class="font-body text-body-md text-light-on-surface text-pretty max-w-4xl" data-design-text-token="body-md">
+          Sistem ini mengestimasi waktu tiba pengantaran makanan secara adaptif menggunakan arsitektur <strong>Adaptive Neuro-Fuzzy Inference System (ANFIS)</strong>. Model memetakan interaksi non-linear antara lima variabel operasional utama—jarak tempuh restoran ke pelanggan, waktu persiapan dapur, pengalaman kurir, tingkat kemacetan lalu lintas, dan kondisi cuaca—ke dalam 32 aturan fuzzy Sugeno Orde-1 dengan fungsi keanggotaan Gaussian yang dilatih secara hibrida.
+        </p>
+      </section>
+
+      <hr class="border-light-outline-variant">
+
+      <!-- 2. Section Kondisi Operasional Saat Ini -->
+      <section class="flex flex-col gap-gutter-md">
+        <div class="flex items-center gap-gutter-sm">
+          <span class="material-symbols-outlined text-light-on-surface text-[22px]" aria-hidden="true">sensors</span>
+          <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+            Kondisi Operasional Saat Ini (Seed Tanggal &amp; Jam)
+          </h2>
+        </div>
+
+        <div class="flex flex-col gap-gutter-xs">
+          <label class="inline-flex items-center gap-gutter-sm cursor-pointer select-none">
+            <input type="checkbox" class="w-4 h-4 rounded-sm border-light-outline text-streamlit-red focus:ring-streamlit-red">
+            <span class="font-body text-body-md text-light-on-surface" data-design-text-token="body-md">
+              Simulasikan tanggal/jam tertentu (untuk menguji perubahan seed saat demo)
+            </span>
+          </label>
+          <p class="font-mono text-mono-sm text-light-on-surface-variant tabular-nums" data-design-text-token="mono-sm">
+            Waktu Referensi: 21 November 2026, Pukul 08:00 | Seed Deterministik: 2026112108
+          </p>
+        </div>
+
+        <!-- 4-column horizontal grid of Streamlit metric cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md items-stretch">
+          <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+            <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">partly_cloudy_day</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Cuaca Saat Ini</span>
+            </header>
+            <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">Clear</p>
+          </article>
+
+          <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+            <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">traffic</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Tingkat Kemacetan</span>
+            </header>
+            <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">Medium</p>
+          </article>
+
+          <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+            <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">skillet</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Estimasi Antrean Dapur</span>
+            </header>
+            <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">15 menit</p>
+          </article>
+
+          <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+            <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">badge</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Pengalaman Kurir</span>
+            </header>
+            <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">4.5 tahun</p>
+          </article>
+        </div>
+      </section>
+
+      <hr class="border-light-outline-variant">
+
+      <!-- 3. Section Prediksi Waktu Pengantaran -->
+      <section class="flex flex-col gap-gutter-md">
+        <div class="flex items-center gap-gutter-sm">
+          <span class="material-symbols-outlined text-light-on-surface text-[22px]" aria-hidden="true">bolt</span>
+          <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+            Prediksi Waktu Pengantaran
+          </h2>
+        </div>
+
+        <!-- Horizontal Streamlit Radio Button Group -->
+        <fieldset class="flex flex-col gap-gutter-sm">
+          <legend class="font-label text-label-md text-light-on-surface mb-gutter-xs" data-design-text-token="label-md">
+            Pilih Sumber Parameter Input:
+          </legend>
+          <div class="flex flex-wrap items-center gap-gutter-lg">
+            <label class="inline-flex items-center gap-gutter-sm cursor-pointer">
+              <input type="radio" name="param_source" checked class="w-4 h-4 text-streamlit-red border-light-outline focus:ring-streamlit-red">
+              <span class="font-body text-body-md text-light-on-surface" data-design-text-token="body-md">
+                Gunakan Kondisi Saat Ini (Otomatis dari Seed)
+              </span>
+            </label>
+            <label class="inline-flex items-center gap-gutter-sm cursor-pointer">
+              <input type="radio" name="param_source" class="w-4 h-4 text-streamlit-red border-light-outline focus:ring-streamlit-red">
+              <span class="font-body text-body-md text-light-on-surface" data-design-text-token="body-md">
+                Input Manual Penuh (Simulasi Bebas)
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Streamlit Number Input with +/- stepper buttons -->
+        <div class="max-w-md">
+          <label data-component-id="input-field-number" data-component-type="input-field" data-component-variant="number" class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">
+              Masukkan Jarak Restoran ke Pelanggan (km)
+            </span>
+            <div class="flex items-center rounded bg-light-surface-container-low border border-light-outline-variant overflow-hidden focus-within:border-streamlit-red">
+              <input type="text" value="5.50" readonly class="w-full bg-transparent border-0 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface tabular-nums focus:ring-0">
+              <div class="flex items-center border-l border-light-outline-variant">
+                <button type="button" aria-label="Kurangi jarak" class="px-gutter-sm py-gutter-sm text-light-on-surface hover:bg-light-outline-variant transition-colors duration-state-change">
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">remove</span>
+                </button>
+                <button type="button" aria-label="Tambah jarak" class="px-gutter-sm py-gutter-sm text-light-on-surface hover:bg-light-outline-variant border-l border-light-outline-variant transition-colors duration-state-change">
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">add</span>
+                </button>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Prediction Result Row (1:2 width ratio) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-md items-center pt-gutter-xs">
+          <div class="md:col-span-1 flex flex-col gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+            <div class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">timer</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Estimasi Waktu Tiba</span>
+            </div>
+            <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">32.4 menit</p>
+          </div>
+
+          <div class="md:col-span-2">
+            <div role="alert" data-component-id="alert-info" data-component-type="alert" data-component-variant="info" class="flex items-start gap-gutter-sm px-gutter-md py-gutter-md rounded bg-light-info border border-light-info-border text-light-on-info">
+              <span class="material-symbols-outlined text-[20px] shrink-0 mt-0" aria-hidden="true">info</span>
+              <span class="font-body text-body-md" data-design-text-token="body-md">
+                Status: Pengantaran Normal — Waktu pengiriman berada pada rentang standar.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Bottom Expandable Accordions -->
+      <section class="flex flex-col gap-gutter-sm pt-gutter-xs">
+        <details data-component-id="card-action" data-component-type="card" data-component-variant="action" class="group rounded bg-light-surface border border-light-outline-variant">
+          <summary class="flex items-center justify-between px-gutter-md py-gutter-sm cursor-pointer list-none hover:bg-light-surface-container transition-colors duration-state-change">
+            <span class="flex items-center gap-gutter-sm text-light-on-surface">
+              <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant" aria-hidden="true">search</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Lihat Rincian Komputasi 5 Lapisan ANFIS</span>
+            </span>
+            <span class="material-symbols-outlined text-[20px] text-light-on-surface-variant group-open:rotate-180 transition-transform duration-state-change" aria-hidden="true">expand_more</span>
+          </summary>
+          <div class="px-gutter-md pb-gutter-md pt-gutter-sm border-t border-light-outline-variant">
+            <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+              Rincian fuzzifikasi (L1), firing strength 32 aturan (L2), normalisasi bobot (L3), konsekuen Sugeno Orde-1 (L4), dan agregasi akhir (L5) tersedia untuk parameter aktif.
+            </p>
+          </div>
+        </details>
+
+        <details data-component-id="card-action" data-component-type="card" data-component-variant="action" class="group rounded bg-light-surface border border-light-outline-variant">
+          <summary class="flex items-center justify-between px-gutter-md py-gutter-sm cursor-pointer list-none hover:bg-light-surface-container transition-colors duration-state-change">
+            <span class="flex items-center gap-gutter-sm text-light-on-surface">
+              <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant" aria-hidden="true">account_tree</span>
+              <span class="font-label text-label-md" data-design-text-token="label-md">Ringkasan Arsitektur 5 Lapisan ANFIS</span>
+            </span>
+            <span class="material-symbols-outlined text-[20px] text-light-on-surface-variant group-open:rotate-180 transition-transform duration-state-change" aria-hidden="true">expand_more</span>
+          </summary>
+          <div class="px-gutter-md pb-gutter-md pt-gutter-sm border-t border-light-outline-variant">
+            <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+              Lapisan 1: 10 node Gaussian MF (2 per input) • Lapisan 2: 32 node produk aturan • Lapisan 3: Normalisasi firing strength • Lapisan 4: 32 fungsi linear orde-1 • Lapisan 5: Penjumlahan terbobot tunggal.
+            </p>
+          </div>
+        </details>
+      </section>
+
+    </main>
+  </div>
+
+
+</body></html>
+
+<!-- 2. Dataset & Preprocessing -->
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2. Dataset &amp; Preprocessing — ANFIS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'streamlit-red': '#FF4B4B',
+        'chart-blue': '#1F77B4',
+        'chart-orange': '#FF7F0E',
+        'light-primary': '#C81E2B',
+        'light-on-primary': '#FFFFFF',
+        'light-surface': '#FFFFFF',
+        'light-surface-container-low': '#F0F2F6',
+        'light-surface-container': '#F8F9FB',
+        'light-on-surface': '#31333F',
+        'light-on-surface-variant': '#555867',
+        'light-outline': '#808495',
+        'light-outline-variant': '#E6EAF1',
+        'light-info': '#EBF3FE',
+        'light-on-info': '#0C3B78',
+        'light-info-border': '#BFD6F6',
+        'light-success': '#E7F6EC',
+        'light-on-success': '#0F5132',
+        'light-success-border': '#B7E4C7',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '8px',
+        'lg': '12px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Source Sans 3"', 'sans-serif'],
+        'body': ['"Source Sans 3"', 'sans-serif'],
+        'label': ['"Source Sans 3"', 'sans-serif'],
+        'metric': ['"Source Sans 3"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['34px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'metric-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'mono-sm': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=Source+Code+Pro:wght@400;500&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface text-light-on-surface font-body antialiased" data-stitch-vh="min-h-[1024px]===min-h-screen">
+  <div class="mx-auto px-gutter-xl py-gutter-xl flex flex-col gap-gutter-lg" style="max-width: 1200px;">
+
+    <!-- Top Header Section -->
+    <header class="flex flex-col gap-gutter-xs">
+      <div class="flex items-center gap-gutter-sm">
+        <span class="material-symbols-outlined text-streamlit-red text-[32px] shrink-0" aria-hidden="true">delivery_dining</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-light-on-surface text-balance" data-design-text-token="display-lg">
+          Estimasi Waktu Tiba Pengantaran Makanan Berbasis ANFIS
+        </h1>
+      </div>
+      <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+        Adaptive Neuro-Fuzzy Inference System (5 Input, 2 MF Gaussian, 32 Aturan Sugeno Orde-1)
+      </p>
+    </header>
+
+    <!-- Horizontal Streamlit Tab Bar -->
+    <nav aria-label="Navigasi Utama ANFIS">
+      <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon" class="w-full">
+        <div role="tablist" aria-label="Halaman Aplikasi ANFIS" class="flex items-center gap-gutter-lg border-b border-light-outline-variant overflow-x-auto">
+          <a href="../tab-1-beranda-prediksi/BerandaPrediksi.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">home</span>
+            <span data-design-text-token="label-md">1. Beranda &amp; Prediksi Utama</span>
+          </a>
+          <a href="../tab-2-dataset-preprocessing/DatasetPreprocessing.html" role="tab" aria-selected="true" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-streamlit-red text-light-primary font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">database</span>
+            <span data-design-text-token="label-md">2. Dataset &amp; Preprocessing</span>
+          </a>
+          <a href="../tab-3-pelatihan-model/PelatihanModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">model_training</span>
+            <span data-design-text-token="label-md">3. Pelatihan Model (Training)</span>
+          </a>
+          <a href="../tab-4-simulasi-5-lapisan/Simulasi5Lapisan.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">tune</span>
+            <span data-design-text-token="label-md">4. Simulasi &amp; Inspeksi 5 Lapisan</span>
+          </a>
+          <a href="../tab-5-evaluasi-model/EvaluasiModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">analytics</span>
+            <span data-design-text-token="label-md">5. Evaluasi Model</span>
+          </a>
+          <a href="../tab-6-informasi-sistem/InformasiSistem.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+            <span data-design-text-token="label-md">6. Informasi Sistem &amp; 32 Aturan</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content inside Tab 2 -->
+    <main class="flex flex-col gap-gutter-lg pt-gutter-xs">
+
+      <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+        Manajemen Dataset &amp; Pra-pemrosesan
+      </h2>
+
+      <!-- Soft blue Streamlit info alert box -->
+      <div role="alert" data-component-id="alert-info" data-component-type="alert" data-component-variant="info" class="flex items-start gap-gutter-sm px-gutter-md py-gutter-md rounded bg-light-info border border-light-info-border text-light-on-info">
+        <span class="material-symbols-outlined text-[20px] shrink-0 mt-0" aria-hidden="true">info</span>
+        <span class="font-body text-body-md" data-design-text-token="body-md">
+          Sumber dataset aktif: File Lokal (<span class="font-mono text-mono-sm">data/Food_Delivery_Times.csv</span>)
+        </span>
+      </div>
+
+      <!-- Streamlit file uploader dropzone box -->
+      <section class="flex flex-col gap-gutter-xs">
+        <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">
+          Unggah Dataset CSV (Food_Delivery_Times.csv)
+        </span>
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-gutter-md px-gutter-lg py-gutter-md rounded bg-light-surface-container-low border border-light-outline-variant">
+          <div class="flex items-center gap-gutter-md">
+            <span class="material-symbols-outlined text-[32px] text-light-on-surface-variant shrink-0" aria-hidden="true">cloud_upload</span>
+            <div class="flex flex-col">
+              <span class="font-body text-body-md text-light-on-surface" data-design-text-token="body-md">Drag and drop file here</span>
+              <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">Limit 200MB per file • CSV</span>
+            </div>
+          </div>
+          <button data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" class="inline-flex items-center justify-center gap-gutter-sm px-gutter-md py-gutter-sm rounded bg-light-surface border border-light-outline-variant text-light-on-surface font-label text-label-md hover:border-streamlit-red hover:text-streamlit-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-streamlit-red transition-colors duration-state-change shrink-0">
+            <span data-design-text-token="label-md">Browse files</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 3-column Streamlit metric row -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter-md items-stretch">
+        <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+          <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">table_rows</span>
+            <span class="font-label text-label-md" data-design-text-token="label-md">Total Data Bersih</span>
+          </header>
+          <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">1000 baris</p>
+        </article>
+
+        <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+          <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">school</span>
+            <span class="font-label text-label-md" data-design-text-token="label-md">Data Latih (80%)</span>
+          </header>
+          <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">800 baris</p>
+        </article>
+
+        <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+          <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">fact_check</span>
+            <span class="font-label text-label-md" data-design-text-token="label-md">Data Uji (20%)</span>
+          </header>
+          <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">200 baris</p>
+        </article>
+      </section>
+
+      <!-- Preview 10 rows table -->
+      <section class="flex flex-col gap-gutter-sm">
+        <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+          Pratinjau 10 Baris Data Setelah Cleaning &amp; Encoding:
+        </h3>
+
+        <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="w-full overflow-x-auto rounded border border-light-outline-variant bg-light-surface">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-light-surface-container-low border-b border-light-outline-variant">
+              <tr>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">#</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Distance_km</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Preparation_Time_min</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Courier_Experience_yrs</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Traffic_Level</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Weather</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Delivery_Time_min</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-light-outline-variant font-body text-body-sm text-light-on-surface tabular-nums">
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">7.93</td>
+                <td class="px-gutter-md py-gutter-sm text-right">12</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Low)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">2 (Windy)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">43</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">1</td>
+                <td class="px-gutter-md py-gutter-sm text-right">16.42</td>
+                <td class="px-gutter-md py-gutter-sm text-right">20</td>
+                <td class="px-gutter-md py-gutter-sm text-right">2.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1 (Medium)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Clear)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">84</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">2</td>
+                <td class="px-gutter-md py-gutter-sm text-right">9.52</td>
+                <td class="px-gutter-md py-gutter-sm text-right">28</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Low)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1 (Foggy)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">59</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">3</td>
+                <td class="px-gutter-md py-gutter-sm text-right">7.44</td>
+                <td class="px-gutter-md py-gutter-sm text-right">5</td>
+                <td class="px-gutter-md py-gutter-sm text-right">6.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1 (Medium)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">3 (Rainy)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">37</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">4</td>
+                <td class="px-gutter-md py-gutter-sm text-right">19.03</td>
+                <td class="px-gutter-md py-gutter-sm text-right">16</td>
+                <td class="px-gutter-md py-gutter-sm text-right">5.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Low)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Clear)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">68</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">5</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1.94</td>
+                <td class="px-gutter-md py-gutter-sm text-right">8</td>
+                <td class="px-gutter-md py-gutter-sm text-right">9.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Low)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Clear)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">15</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">6</td>
+                <td class="px-gutter-md py-gutter-sm text-right">9.52</td>
+                <td class="px-gutter-md py-gutter-sm text-right">12</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">2 (High)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Clear)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">49</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">7</td>
+                <td class="px-gutter-md py-gutter-sm text-right">17.35</td>
+                <td class="px-gutter-md py-gutter-sm text-right">22</td>
+                <td class="px-gutter-md py-gutter-sm text-right">2.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1 (Medium)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">3 (Rainy)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">86</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">8</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1.78</td>
+                <td class="px-gutter-md py-gutter-sm text-right">20</td>
+                <td class="px-gutter-md py-gutter-sm text-right">6.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0 (Low)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">4 (Snowy)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">34</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">9</td>
+                <td class="px-gutter-md py-gutter-sm text-right">10.56</td>
+                <td class="px-gutter-md py-gutter-sm text-right">23</td>
+                <td class="px-gutter-md py-gutter-sm text-right">4.0</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1 (Medium)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">2 (Windy)</td>
+                <td class="px-gutter-md py-gutter-sm text-right font-semibold">56</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+
+</body></html>
+
+<!-- 3. Pelatihan Model (Training) -->
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3. Pelatihan Model (Training) — ANFIS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'streamlit-red': '#FF4B4B',
+        'chart-blue': '#1F77B4',
+        'chart-orange': '#FF7F0E',
+        'light-primary': '#C81E2B',
+        'light-on-primary': '#FFFFFF',
+        'light-surface': '#FFFFFF',
+        'light-surface-container-low': '#F0F2F6',
+        'light-surface-container': '#F8F9FB',
+        'light-on-surface': '#31333F',
+        'light-on-surface-variant': '#555867',
+        'light-outline': '#808495',
+        'light-outline-variant': '#E6EAF1',
+        'light-info': '#EBF3FE',
+        'light-on-info': '#0C3B78',
+        'light-info-border': '#BFD6F6',
+        'light-success': '#E7F6EC',
+        'light-on-success': '#0F5132',
+        'light-success-border': '#B7E4C7',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '8px',
+        'lg': '12px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Source Sans 3"', 'sans-serif'],
+        'body': ['"Source Sans 3"', 'sans-serif'],
+        'label': ['"Source Sans 3"', 'sans-serif'],
+        'metric': ['"Source Sans 3"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['34px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'metric-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'mono-sm': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=Source+Code+Pro:wght@400;500&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface text-light-on-surface font-body antialiased" data-stitch-vh="min-h-[1024px]===min-h-screen">
+  <div class="mx-auto px-gutter-xl py-gutter-xl flex flex-col gap-gutter-lg" style="max-width: 1200px;">
+
+    <!-- Top Header Section -->
+    <header class="flex flex-col gap-gutter-xs">
+      <div class="flex items-center gap-gutter-sm">
+        <span class="material-symbols-outlined text-streamlit-red text-[32px] shrink-0" aria-hidden="true">delivery_dining</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-light-on-surface text-balance" data-design-text-token="display-lg">
+          Estimasi Waktu Tiba Pengantaran Makanan Berbasis ANFIS
+        </h1>
+      </div>
+      <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+        Adaptive Neuro-Fuzzy Inference System (5 Input, 2 MF Gaussian, 32 Aturan Sugeno Orde-1)
+      </p>
+    </header>
+
+    <!-- Horizontal Streamlit Tab Bar -->
+    <nav aria-label="Navigasi Utama ANFIS">
+      <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon" class="w-full">
+        <div role="tablist" aria-label="Halaman Aplikasi ANFIS" class="flex items-center gap-gutter-lg border-b border-light-outline-variant overflow-x-auto">
+          <a href="../tab-1-beranda-prediksi/BerandaPrediksi.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">home</span>
+            <span data-design-text-token="label-md">1. Beranda &amp; Prediksi Utama</span>
+          </a>
+          <a href="../tab-2-dataset-preprocessing/DatasetPreprocessing.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">database</span>
+            <span data-design-text-token="label-md">2. Dataset &amp; Preprocessing</span>
+          </a>
+          <a href="../tab-3-pelatihan-model/PelatihanModel.html" role="tab" aria-selected="true" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-streamlit-red text-light-primary font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">model_training</span>
+            <span data-design-text-token="label-md">3. Pelatihan Model (Training)</span>
+          </a>
+          <a href="../tab-4-simulasi-5-lapisan/Simulasi5Lapisan.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">tune</span>
+            <span data-design-text-token="label-md">4. Simulasi &amp; Inspeksi 5 Lapisan</span>
+          </a>
+          <a href="../tab-5-evaluasi-model/EvaluasiModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">analytics</span>
+            <span data-design-text-token="label-md">5. Evaluasi Model</span>
+          </a>
+          <a href="../tab-6-informasi-sistem/InformasiSistem.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+            <span data-design-text-token="label-md">6. Informasi Sistem &amp; 32 Aturan</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content inside Tab 3 -->
+    <main class="flex flex-col gap-gutter-lg pt-gutter-xs">
+
+      <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+        Konfigurasi &amp; Pelatihan Hybrid Learning ANFIS
+      </h2>
+
+      <!-- 3-column Streamlit slider row -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter-lg">
+        <!-- Slider 1 -->
+        <div class="flex flex-col gap-gutter-sm">
+          <div class="flex items-center justify-between">
+            <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Jumlah Epoch</span>
+            <span class="font-mono text-mono-sm text-light-primary tabular-nums" data-design-text-token="mono-sm">50</span>
+          </div>
+          <div class="relative flex items-center h-5">
+            <div class="w-full h-1.5 rounded-full bg-light-surface-container-low overflow-hidden">
+              <div class="h-full bg-streamlit-red rounded-full" style="width: 21%;"></div>
+            </div>
+            <div class="absolute w-4 h-4 rounded-full bg-streamlit-red border-2 border-light-surface shadow-sm" style="left: calc(21% - 8px);"></div>
+          </div>
+          <div class="flex justify-between font-label text-label-sm text-light-on-surface-variant tabular-nums">
+            <span>10</span>
+            <span>200</span>
+          </div>
+        </div>
+
+        <!-- Slider 2 -->
+        <div class="flex flex-col gap-gutter-sm">
+          <div class="flex items-center justify-between">
+            <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Learning Rate (Gradient Descent)</span>
+            <span class="font-mono text-mono-sm text-light-primary tabular-nums" data-design-text-token="mono-sm">0.05</span>
+          </div>
+          <div class="relative flex items-center h-5">
+            <div class="w-full h-1.5 rounded-full bg-light-surface-container-low overflow-hidden">
+              <div class="h-full bg-streamlit-red rounded-full" style="width: 50%;"></div>
+            </div>
+            <div class="absolute w-4 h-4 rounded-full bg-streamlit-red border-2 border-light-surface shadow-sm" style="left: calc(50% - 8px);"></div>
+          </div>
+          <div class="flex justify-between font-label text-label-sm text-light-on-surface-variant tabular-nums">
+            <span>0.001</span>
+            <span>0.1</span>
+          </div>
+        </div>
+
+        <!-- Slider 3 -->
+        <div class="flex flex-col gap-gutter-sm">
+          <div class="flex items-center justify-between">
+            <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Regularisasi LSE (Lambda)</span>
+            <span class="font-mono text-mono-sm text-light-primary tabular-nums" data-design-text-token="mono-sm">0.001</span>
+          </div>
+          <div class="relative flex items-center h-5">
+            <div class="w-full h-1.5 rounded-full bg-light-surface-container-low overflow-hidden">
+              <div class="h-full bg-streamlit-red rounded-full" style="width: 33%;"></div>
+            </div>
+            <div class="absolute w-4 h-4 rounded-full bg-streamlit-red border-2 border-light-surface shadow-sm" style="left: calc(33% - 8px);"></div>
+          </div>
+          <div class="flex justify-between font-label text-label-sm text-light-on-surface-variant tabular-nums">
+            <span>0.0001</span>
+            <span>0.1</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Primary button + Success banner -->
+      <section class="flex flex-col items-start gap-gutter-md">
+        <button data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" type="button" class="inline-flex items-center justify-center gap-gutter-sm px-gutter-md py-gutter-sm rounded bg-light-primary text-light-on-primary font-label text-label-md hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-streamlit-red transition-opacity duration-state-change">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">play_arrow</span>
+          <span data-design-text-token="label-md">Latih Model ANFIS</span>
+        </button>
+
+        <div role="alert" data-component-id="alert-success" data-component-type="alert" data-component-variant="success" class="w-full flex items-start gap-gutter-sm px-gutter-md py-gutter-md rounded bg-light-success border border-light-success-border text-light-on-success">
+          <span class="material-symbols-outlined text-[20px] shrink-0 mt-0" aria-hidden="true">check_circle</span>
+          <span class="font-body text-body-md tabular-nums" data-design-text-token="body-md">
+            Pelatihan selesai! RMSE Akhir (Skala Normalisasi): 0.0842
+          </span>
+        </div>
+      </section>
+
+      <!-- Section 1: Grafik Konvergensi Training -->
+      <section class="flex flex-col gap-gutter-sm">
+        <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+          1. Grafik Konvergensi Training (RMSE per Epoch)
+        </h3>
+        <div class="rounded border border-light-outline-variant bg-light-surface p-gutter-md">
+          <svg viewBox="0 0 920 260" class="w-full h-auto" role="img" aria-label="Grafik Konvergensi Training RMSE per Epoch">
+            <!-- Gridlines -->
+            <g stroke="#E6EAF1" stroke-dasharray="4 4" stroke-width="1">
+              <line x1="64" y1="24" x2="896" y2="24"></line>
+              <line x1="64" y1="70" x2="896" y2="70"></line>
+              <line x1="64" y1="116" x2="896" y2="116"></line>
+              <line x1="64" y1="162" x2="896" y2="162"></line>
+              <line x1="64" y1="208" x2="896" y2="208"></line>
+              <line x1="230" y1="24" x2="230" y2="208"></line>
+              <line x1="396" y1="24" x2="396" y2="208"></line>
+              <line x1="562" y1="24" x2="562" y2="208"></line>
+              <line x1="728" y1="24" x2="728" y2="208"></line>
+              <line x1="896" y1="24" x2="896" y2="208"></line>
+            </g>
+            <!-- Axes -->
+            <line x1="64" y1="24" x2="64" y2="208" stroke="#808495" stroke-width="1.2"></line>
+            <line x1="64" y1="208" x2="896" y2="208" stroke="#808495" stroke-width="1.2"></line>
+            <!-- Y Labels -->
+            <g fill="#555867" font-size="11" font-family="Source Sans 3, sans-serif" text-anchor="end">
+              <text x="56" y="28">0.32</text>
+              <text x="56" y="74">0.26</text>
+              <text x="56" y="120">0.20</text>
+              <text x="56" y="166">0.14</text>
+              <text x="56" y="212">0.08</text>
+            </g>
+            <!-- X Labels -->
+            <g fill="#555867" font-size="11" font-family="Source Sans 3, sans-serif" text-anchor="middle">
+              <text x="64" y="226">0</text>
+              <text x="230" y="226">10</text>
+              <text x="396" y="226">20</text>
+              <text x="562" y="226">30</text>
+              <text x="728" y="226">40</text>
+              <text x="896" y="226">50</text>
+              <text x="480" y="248" font-weight="600" fill="#31333F">Epoch</text>
+            </g>
+            <text x="18" y="116" font-size="11" font-weight="600" fill="#31333F" font-family="Source Sans 3, sans-serif" transform="rotate(-90 18 116)" text-anchor="middle">RMSE (Normalisasi)</text>
+            <!-- Smooth downward RMSE curve -->
+            <path d="M 64 34 C 110 82, 160 135, 230 160 C 310 184, 410 194, 562 199 C 700 203, 810 204, 896 205" fill="none" stroke="#1F77B4" stroke-width="2.5"></path>
+            <circle cx="896" cy="205" r="4" fill="#FF4B4B"></circle>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Section 2: Adaptasi Fungsi Keanggotaan Gaussian -->
+      <section class="flex flex-col gap-gutter-sm">
+        <div class="flex flex-wrap items-center justify-between gap-gutter-sm">
+          <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+            2. Adaptasi Fungsi Keanggotaan Gaussian (Sebelum vs Sesudah Training)
+          </h3>
+          <div class="flex items-center gap-gutter-md font-label text-label-sm text-light-on-surface-variant">
+            <span class="inline-flex items-center gap-gutter-xs"><span class="w-4 h-0.5 bg-chart-blue inline-block"></span> Rendah (Trained)</span>
+            <span class="inline-flex items-center gap-gutter-xs"><span class="w-4 h-0.5 bg-streamlit-red inline-block"></span> Tinggi (Trained)</span>
+            <span class="inline-flex items-center gap-gutter-xs"><span class="w-4 h-0.5 border-t-2 border-dashed border-light-outline inline-block"></span> Awal (Initial)</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter-sm">
+          <!-- Subplot 1 -->
+          <div class="rounded border border-light-outline-variant bg-light-surface p-gutter-sm flex flex-col gap-gutter-xs">
+            <span class="font-mono text-mono-sm text-center text-light-on-surface">Distance_km</span>
+            <svg viewBox="0 0 180 110" class="w-full h-auto">
+              <line x1="20" y1="90" x2="168" y2="90" stroke="#808495" stroke-width="1"></line>
+              <line x1="20" y1="15" x2="20" y2="90" stroke="#808495" stroke-width="1"></line>
+              <path d="M 20 18 C 52 18, 72 88, 120 90" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 68 90 C 116 88, 136 18, 168 18" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 20 18 C 46 20, 68 88, 110 90" fill="none" stroke="#1F77B4" stroke-width="2"></path>
+              <path d="M 74 90 C 114 86, 132 18, 168 18" fill="none" stroke="#FF4B4B" stroke-width="2"></path>
+            </svg>
+          </div>
+          <!-- Subplot 2 -->
+          <div class="rounded border border-light-outline-variant bg-light-surface p-gutter-sm flex flex-col gap-gutter-xs">
+            <span class="font-mono text-mono-sm text-center text-light-on-surface">Preparation_Time_min</span>
+            <svg viewBox="0 0 180 110" class="w-full h-auto">
+              <line x1="20" y1="90" x2="168" y2="90" stroke="#808495" stroke-width="1"></line>
+              <line x1="20" y1="15" x2="20" y2="90" stroke="#808495" stroke-width="1"></line>
+              <path d="M 20 18 C 52 18, 72 88, 120 90" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 68 90 C 116 88, 136 18, 168 18" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 20 18 C 56 22, 80 88, 125 90" fill="none" stroke="#1F77B4" stroke-width="2"></path>
+              <path d="M 60 90 C 104 88, 128 18, 168 18" fill="none" stroke="#FF4B4B" stroke-width="2"></path>
+            </svg>
+          </div>
+          <!-- Subplot 3 -->
+          <div class="rounded border border-light-outline-variant bg-light-surface p-gutter-sm flex flex-col gap-gutter-xs">
+            <span class="font-mono text-mono-sm text-center text-light-on-surface">Courier_Experience_yrs</span>
+            <svg viewBox="0 0 180 110" class="w-full h-auto">
+              <line x1="20" y1="90" x2="168" y2="90" stroke="#808495" stroke-width="1"></line>
+              <line x1="20" y1="15" x2="20" y2="90" stroke="#808495" stroke-width="1"></line>
+              <path d="M 20 18 C 52 18, 72 88, 120 90" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 68 90 C 116 88, 136 18, 168 18" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 20 18 C 48 18, 70 88, 114 90" fill="none" stroke="#1F77B4" stroke-width="2"></path>
+              <path d="M 70 90 C 118 88, 140 18, 168 18" fill="none" stroke="#FF4B4B" stroke-width="2"></path>
+            </svg>
+          </div>
+          <!-- Subplot 4 -->
+          <div class="rounded border border-light-outline-variant bg-light-surface p-gutter-sm flex flex-col gap-gutter-xs">
+            <span class="font-mono text-mono-sm text-center text-light-on-surface">Traffic_Level</span>
+            <svg viewBox="0 0 180 110" class="w-full h-auto">
+              <line x1="20" y1="90" x2="168" y2="90" stroke="#808495" stroke-width="1"></line>
+              <line x1="20" y1="15" x2="20" y2="90" stroke="#808495" stroke-width="1"></line>
+              <path d="M 20 18 C 52 18, 72 88, 120 90" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 68 90 C 116 88, 136 18, 168 18" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 20 18 C 50 18, 78 88, 122 90" fill="none" stroke="#1F77B4" stroke-width="2"></path>
+              <path d="M 64 90 C 110 88, 134 18, 168 18" fill="none" stroke="#FF4B4B" stroke-width="2"></path>
+            </svg>
+          </div>
+          <!-- Subplot 5 -->
+          <div class="rounded border border-light-outline-variant bg-light-surface p-gutter-sm flex flex-col gap-gutter-xs">
+            <span class="font-mono text-mono-sm text-center text-light-on-surface">Weather</span>
+            <svg viewBox="0 0 180 110" class="w-full h-auto">
+              <line x1="20" y1="90" x2="168" y2="90" stroke="#808495" stroke-width="1"></line>
+              <line x1="20" y1="15" x2="20" y2="90" stroke="#808495" stroke-width="1"></line>
+              <path d="M 20 18 C 52 18, 72 88, 120 90" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 68 90 C 116 88, 136 18, 168 18" fill="none" stroke="#808495" stroke-dasharray="3 3" stroke-width="1.2"></path>
+              <path d="M 20 18 C 54 18, 76 88, 118 90" fill="none" stroke="#1F77B4" stroke-width="2"></path>
+              <path d="M 68 90 C 114 88, 138 18, 168 18" fill="none" stroke="#FF4B4B" stroke-width="2"></path>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+
+</body></html>
+
+<!-- 4. Simulasi & Inspeksi 5 Lapisan -->
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4. Simulasi &amp; Inspeksi 5 Lapisan — ANFIS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'streamlit-red': '#FF4B4B',
+        'chart-blue': '#1F77B4',
+        'chart-orange': '#FF7F0E',
+        'light-primary': '#C81E2B',
+        'light-on-primary': '#FFFFFF',
+        'light-surface': '#FFFFFF',
+        'light-surface-container-low': '#F0F2F6',
+        'light-surface-container': '#F8F9FB',
+        'light-on-surface': '#31333F',
+        'light-on-surface-variant': '#555867',
+        'light-outline': '#808495',
+        'light-outline-variant': '#E6EAF1',
+        'light-info': '#EBF3FE',
+        'light-on-info': '#0C3B78',
+        'light-info-border': '#BFD6F6',
+        'light-success': '#E7F6EC',
+        'light-on-success': '#0F5132',
+        'light-success-border': '#B7E4C7',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '8px',
+        'lg': '12px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Source Sans 3"', 'sans-serif'],
+        'body': ['"Source Sans 3"', 'sans-serif'],
+        'label': ['"Source Sans 3"', 'sans-serif'],
+        'metric': ['"Source Sans 3"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['34px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'metric-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'mono-sm': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=Source+Code+Pro:wght@400;500&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface text-light-on-surface font-body antialiased" data-stitch-vh="min-h-[1024px]===min-h-screen">
+  <div class="mx-auto px-gutter-xl py-gutter-xl flex flex-col gap-gutter-lg" style="max-width: 1200px;">
+
+    <!-- Top Header Section -->
+    <header class="flex flex-col gap-gutter-xs">
+      <div class="flex items-center gap-gutter-sm">
+        <span class="material-symbols-outlined text-streamlit-red text-[32px] shrink-0" aria-hidden="true">delivery_dining</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-light-on-surface text-balance" data-design-text-token="display-lg">
+          Estimasi Waktu Tiba Pengantaran Makanan Berbasis ANFIS
+        </h1>
+      </div>
+      <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+        Adaptive Neuro-Fuzzy Inference System (5 Input, 2 MF Gaussian, 32 Aturan Sugeno Orde-1)
+      </p>
+    </header>
+
+    <!-- Horizontal Streamlit Tab Bar -->
+    <nav aria-label="Navigasi Utama ANFIS">
+      <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon" class="w-full">
+        <div role="tablist" aria-label="Halaman Aplikasi ANFIS" class="flex items-center gap-gutter-lg border-b border-light-outline-variant overflow-x-auto">
+          <a href="../tab-1-beranda-prediksi/BerandaPrediksi.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">home</span>
+            <span data-design-text-token="label-md">1. Beranda &amp; Prediksi Utama</span>
+          </a>
+          <a href="../tab-2-dataset-preprocessing/DatasetPreprocessing.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">database</span>
+            <span data-design-text-token="label-md">2. Dataset &amp; Preprocessing</span>
+          </a>
+          <a href="../tab-3-pelatihan-model/PelatihanModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">model_training</span>
+            <span data-design-text-token="label-md">3. Pelatihan Model (Training)</span>
+          </a>
+          <a href="../tab-4-simulasi-5-lapisan/Simulasi5Lapisan.html" role="tab" aria-selected="true" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-streamlit-red text-light-primary font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">tune</span>
+            <span data-design-text-token="label-md">4. Simulasi &amp; Inspeksi 5 Lapisan</span>
+          </a>
+          <a href="../tab-5-evaluasi-model/EvaluasiModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">analytics</span>
+            <span data-design-text-token="label-md">5. Evaluasi Model</span>
+          </a>
+          <a href="../tab-6-informasi-sistem/InformasiSistem.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+            <span data-design-text-token="label-md">6. Informasi Sistem &amp; 32 Aturan</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content inside Tab 4 -->
+    <main class="flex flex-col gap-gutter-lg pt-gutter-xs">
+
+      <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+        Simulasi Skenario &amp; Validasi Perhitungan Per Lapisan
+      </h2>
+
+      <!-- Top 3-column number input row -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter-md">
+        <label data-component-id="input-field-number" data-component-type="input-field" data-component-variant="number" class="flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Jarak Restoran - Pelanggan (km)</span>
+          <div class="flex items-center rounded bg-light-surface-container-low border border-light-outline-variant overflow-hidden">
+            <input type="text" value="6.50" readonly class="w-full bg-transparent border-0 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface tabular-nums focus:ring-0">
+            <div class="flex items-center border-l border-light-outline-variant">
+              <button type="button" aria-label="Kurangi" class="px-gutter-sm py-gutter-sm text-light-on-surface hover:bg-light-outline-variant">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">remove</span>
+              </button>
+              <button type="button" aria-label="Tambah" class="px-gutter-sm py-gutter-sm text-light-on-surface hover:bg-light-outline-variant border-l border-light-outline-variant">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">add</span>
+              </button>
+            </div>
+          </div>
+        </label>
+
+        <label data-component-id="input-field-number" data-component-type="input-field" data-component-variant="number" class="flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Waktu Persiapan Makanan (menit)</span>
+          <div class="flex items-center rounded bg-light-surface-container-low border border-light-outline-variant overflow-hidden">
+            <input type="text" value="15.0" readonly class="w-full bg-transparent border-0 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface tabular-nums focus:ring-0">
+            <div class="flex items-center border-l border-light-outline-variant">
+              <button type="button" aria-label="Kurangi" class="px-gutter-sm py-gutter-sm text-light-on-surface hover:bg-light-outline-variant">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">remove</span>
+              </button>
+              <button type="button" aria-label="Tambah" class="px-gutter-sm py-gutter-sm text-light-on-surface hover:bg-light-outline-variant border-l border-light-outline-variant">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">add</span>
+              </button>
+            </div>
+          </div>
+        </label>
+
+        <label data-component-id="input-field-number" data-component-type="input-field" data-component-variant="number" class="flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Pengalaman Kurir (tahun)</span>
+          <div class="flex items-center rounded bg-light-surface-container-low border border-light-outline-variant overflow-hidden">
+            <input type="text" value="3.0" readonly class="w-full bg-transparent border-0 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface tabular-nums focus:ring-0">
+            <div class="flex items-center border-l border-light-outline-variant">
+              <button type="button" aria-label="Kurangi" class="px-gutter-sm py-gutter-sm text-light-on-surface hover:bg-light-outline-variant">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">remove</span>
+              </button>
+              <button type="button" aria-label="Tambah" class="px-gutter-sm py-gutter-sm text-light-on-surface hover:bg-light-outline-variant border-l border-light-outline-variant">
+                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">add</span>
+              </button>
+            </div>
+          </div>
+        </label>
+      </section>
+
+      <!-- Second 2-column selectbox dropdown row -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-gutter-md">
+        <label class="flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Tingkat Kemacetan Lalu Lintas</span>
+          <div class="relative flex items-center rounded bg-light-surface-container-low border border-light-outline-variant">
+            <select class="w-full appearance-none bg-transparent border-0 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface focus:ring-0">
+              <option selected>Medium</option>
+              <option>Low</option>
+              <option>High</option>
+            </select>
+            <span class="material-symbols-outlined text-[20px] text-light-on-surface-variant pr-gutter-sm pointer-events-none" aria-hidden="true">expand_more</span>
+          </div>
+        </label>
+
+        <label class="flex flex-col gap-gutter-xs">
+          <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Kondisi Cuaca</span>
+          <div class="relative flex items-center rounded bg-light-surface-container-low border border-light-outline-variant">
+            <select class="w-full appearance-none bg-transparent border-0 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface focus:ring-0">
+              <option selected>Clear</option>
+              <option>Foggy</option>
+              <option>Windy</option>
+              <option>Rainy</option>
+              <option>Snowy</option>
+            </select>
+            <span class="material-symbols-outlined text-[20px] text-light-on-surface-variant pr-gutter-sm pointer-events-none" aria-hidden="true">expand_more</span>
+          </div>
+        </label>
+      </section>
+
+      <!-- Prominent Streamlit Metric -->
+      <section class="max-w-sm">
+        <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="flex flex-col gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+          <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">timer</span>
+            <span class="font-label text-label-md" data-design-text-token="label-md">Hasil Prediksi Waktu Pengantaran</span>
+          </header>
+          <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">34.18 menit</p>
+        </article>
+      </section>
+
+      <hr class="border-light-outline-variant">
+
+      <!-- Lapisan 1 Table -->
+      <section class="flex flex-col gap-gutter-sm">
+        <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+          Lapisan 1 — Derajat Keanggotaan Gaussian (μ):
+        </h3>
+        <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="w-full overflow-x-auto rounded border border-light-outline-variant bg-light-surface">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-light-surface-container-low border-b border-light-outline-variant">
+              <tr>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant">Variabel Input</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Nilai Asli</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Nilai Normalisasi [0,1]</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">μ Rendah (MF 0)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">μ Tinggi (MF 1)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-light-outline-variant font-body text-body-sm text-light-on-surface tabular-nums">
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Distance_km</td>
+                <td class="px-gutter-md py-gutter-sm text-right">6.50</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.3091</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.7842</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.2415</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Preparation_Time_min</td>
+                <td class="px-gutter-md py-gutter-sm text-right">15.00</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.4167</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.6418</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.3890</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Courier_Experience_yrs</td>
+                <td class="px-gutter-md py-gutter-sm text-right">3.00</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.3333</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.7510</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.2784</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Traffic_Level</td>
+                <td class="px-gutter-md py-gutter-sm text-right">1.00 (Medium)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.5000</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.5124</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.5061</td>
+              </tr>
+              <tr class="hover:bg-light-surface-container">
+                <td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Weather</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.00 (Clear)</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.0000</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.9912</td>
+                <td class="px-gutter-md py-gutter-sm text-right">0.0418</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Lapisan 2 s.d. 4 Scrollable Table -->
+      <section class="flex flex-col gap-gutter-sm">
+        <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+          Lapisan 2 s.d. Lapisan 4 — Evaluasi 32 Aturan Sugeno (Diurutkan dari Bobot Terbesar):
+        </h3>
+        <div data-component-id="table-scrollable" data-component-type="table" data-component-variant="standard" class="w-full overflow-x-auto max-h-80 overflow-y-auto rounded border border-light-outline-variant bg-light-surface">
+          <table class="w-full text-left border-collapse">
+            <thead class="sticky top-0 bg-light-surface-container-low border-b border-light-outline-variant">
+              <tr>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant">Rule</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant">Kombinasi Premis</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">L2 Firing Strength (w)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">L3 Normalisasi (w_bar)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">L4 Konsekuen Linear (f)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Kontribusi (w_bar * f)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-light-outline-variant font-body text-body-sm text-light-on-surface tabular-nums">
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R1</td><td class="px-gutter-md py-gutter-xs">Rendah, Rendah, Rendah, Rendah, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.1919</td><td class="px-gutter-md py-gutter-xs text-right">0.2084</td><td class="px-gutter-md py-gutter-xs text-right">31.42</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">6.548</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R3</td><td class="px-gutter-md py-gutter-xs">Rendah, Rendah, Rendah, Tinggi, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.1895</td><td class="px-gutter-md py-gutter-xs text-right">0.2058</td><td class="px-gutter-md py-gutter-xs text-right">34.85</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">7.172</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R9</td><td class="px-gutter-md py-gutter-xs">Rendah, Tinggi, Rendah, Rendah, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.1163</td><td class="px-gutter-md py-gutter-xs text-right">0.1263</td><td class="px-gutter-md py-gutter-xs text-right">35.10</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">4.433</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R11</td><td class="px-gutter-md py-gutter-xs">Rendah, Tinggi, Rendah, Tinggi, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.1149</td><td class="px-gutter-md py-gutter-xs text-right">0.1248</td><td class="px-gutter-md py-gutter-xs text-right">37.92</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">4.732</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R5</td><td class="px-gutter-md py-gutter-xs">Rendah, Rendah, Tinggi, Rendah, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.0711</td><td class="px-gutter-md py-gutter-xs text-right">0.0772</td><td class="px-gutter-md py-gutter-xs text-right">29.15</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">2.250</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R7</td><td class="px-gutter-md py-gutter-xs">Rendah, Rendah, Tinggi, Tinggi, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.0702</td><td class="px-gutter-md py-gutter-xs text-right">0.0762</td><td class="px-gutter-md py-gutter-xs text-right">32.60</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">2.484</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R17</td><td class="px-gutter-md py-gutter-xs">Tinggi, Rendah, Rendah, Rendah, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.0591</td><td class="px-gutter-md py-gutter-xs text-right">0.0642</td><td class="px-gutter-md py-gutter-xs text-right">38.40</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">2.465</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R19</td><td class="px-gutter-md py-gutter-xs">Tinggi, Rendah, Rendah, Tinggi, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.0584</td><td class="px-gutter-md py-gutter-xs text-right">0.0634</td><td class="px-gutter-md py-gutter-xs text-right">41.12</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">2.607</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R13</td><td class="px-gutter-md py-gutter-xs">Rendah, Tinggi, Tinggi, Rendah, Rendah</td><td class="px-gutter-md py-gutter-xs text-right">0.0431</td><td class="px-gutter-md py-gutter-xs text-right">0.0468</td><td class="px-gutter-md py-gutter-xs text-right">31.80</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">1.488</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">R2..R32</td><td class="px-gutter-md py-gutter-xs text-light-on-surface-variant">23 aturan sisa (bobot normalisasi &lt; 0.046)</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">0.0064</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">0.0069</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">—</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">0.001</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bottom mathematical summary formula line -->
+        <div class="px-gutter-md py-gutter-sm rounded bg-light-surface-container-low border border-light-outline-variant font-mono text-mono-sm text-light-on-surface tabular-nums">
+          Lapisan 5 (Agregasi Akhir): y = Σ (w̄ᵢ · fᵢ) untuk i = 1..32 = 34.18 menit
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+
+</body></html>
+
+<!-- 5. Evaluasi Model -->
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5. Evaluasi Model — ANFIS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'streamlit-red': '#FF4B4B',
+        'chart-blue': '#1F77B4',
+        'chart-orange': '#FF7F0E',
+        'light-primary': '#C81E2B',
+        'light-on-primary': '#FFFFFF',
+        'light-surface': '#FFFFFF',
+        'light-surface-container-low': '#F0F2F6',
+        'light-surface-container': '#F8F9FB',
+        'light-on-surface': '#31333F',
+        'light-on-surface-variant': '#555867',
+        'light-outline': '#808495',
+        'light-outline-variant': '#E6EAF1',
+        'light-info': '#EBF3FE',
+        'light-on-info': '#0C3B78',
+        'light-info-border': '#BFD6F6',
+        'light-success': '#E7F6EC',
+        'light-on-success': '#0F5132',
+        'light-success-border': '#B7E4C7',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '8px',
+        'lg': '12px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Source Sans 3"', 'sans-serif'],
+        'body': ['"Source Sans 3"', 'sans-serif'],
+        'label': ['"Source Sans 3"', 'sans-serif'],
+        'metric': ['"Source Sans 3"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['34px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'metric-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'mono-sm': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=Source+Code+Pro:wght@400;500&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface text-light-on-surface font-body antialiased" data-stitch-vh="min-h-[1024px]===min-h-screen">
+  <div class="mx-auto px-gutter-xl py-gutter-xl flex flex-col gap-gutter-lg" style="max-width: 1200px;">
+
+    <!-- Top Header Section -->
+    <header class="flex flex-col gap-gutter-xs">
+      <div class="flex items-center gap-gutter-sm">
+        <span class="material-symbols-outlined text-streamlit-red text-[32px] shrink-0" aria-hidden="true">delivery_dining</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-light-on-surface text-balance" data-design-text-token="display-lg">
+          Estimasi Waktu Tiba Pengantaran Makanan Berbasis ANFIS
+        </h1>
+      </div>
+      <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+        Adaptive Neuro-Fuzzy Inference System (5 Input, 2 MF Gaussian, 32 Aturan Sugeno Orde-1)
+      </p>
+    </header>
+
+    <!-- Horizontal Streamlit Tab Bar -->
+    <nav aria-label="Navigasi Utama ANFIS">
+      <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon" class="w-full">
+        <div role="tablist" aria-label="Halaman Aplikasi ANFIS" class="flex items-center gap-gutter-lg border-b border-light-outline-variant overflow-x-auto">
+          <a href="../tab-1-beranda-prediksi/BerandaPrediksi.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">home</span>
+            <span data-design-text-token="label-md">1. Beranda &amp; Prediksi Utama</span>
+          </a>
+          <a href="../tab-2-dataset-preprocessing/DatasetPreprocessing.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">database</span>
+            <span data-design-text-token="label-md">2. Dataset &amp; Preprocessing</span>
+          </a>
+          <a href="../tab-3-pelatihan-model/PelatihanModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">model_training</span>
+            <span data-design-text-token="label-md">3. Pelatihan Model (Training)</span>
+          </a>
+          <a href="../tab-4-simulasi-5-lapisan/Simulasi5Lapisan.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">tune</span>
+            <span data-design-text-token="label-md">4. Simulasi &amp; Inspeksi 5 Lapisan</span>
+          </a>
+          <a href="../tab-5-evaluasi-model/EvaluasiModel.html" role="tab" aria-selected="true" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-streamlit-red text-light-primary font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">analytics</span>
+            <span data-design-text-token="label-md">5. Evaluasi Model</span>
+          </a>
+          <a href="../tab-6-informasi-sistem/InformasiSistem.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+            <span data-design-text-token="label-md">6. Informasi Sistem &amp; 32 Aturan</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content inside Tab 5 -->
+    <main class="flex flex-col gap-gutter-lg pt-gutter-xs">
+
+      <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+        Evaluasi Performa Model pada Data Uji (20%)
+      </h2>
+
+      <!-- 3-column Streamlit KPI metric row -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter-md items-stretch">
+        <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+          <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">square_foot</span>
+            <span class="font-label text-label-md" data-design-text-token="label-md">RMSE (Root Mean Squared Error)</span>
+          </header>
+          <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">5.12 menit</p>
+        </article>
+
+        <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+          <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">straighten</span>
+            <span class="font-label text-label-md" data-design-text-token="label-md">MAE (Mean Absolute Error)</span>
+          </header>
+          <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">3.89 menit</p>
+        </article>
+
+        <article data-component-id="card-metric" data-component-type="card" data-component-variant="outlined" class="h-full flex flex-col justify-between gap-gutter-xs p-gutter-md rounded bg-light-surface border border-light-outline-variant">
+          <header class="flex items-center gap-gutter-xs text-light-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">monitoring</span>
+            <span class="font-label text-label-md" data-design-text-token="label-md">Koefisien Determinasi (R²)</span>
+          </header>
+          <p class="font-metric text-metric-lg text-light-on-surface tabular-nums" data-design-text-token="metric-lg">0.8845</p>
+        </article>
+      </section>
+
+      <!-- Wide Matplotlib Dual-line Chart -->
+      <section class="flex flex-col gap-gutter-sm">
+        <div class="flex flex-wrap items-center justify-between gap-gutter-sm">
+          <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+            Perbandingan Waktu Aktual vs Prediksi ANFIS (60 Sampel Uji Pertama)
+          </h3>
+          <div class="flex items-center gap-gutter-md font-label text-label-sm text-light-on-surface-variant">
+            <span class="inline-flex items-center gap-gutter-xs"><span class="w-4 h-0.5 bg-chart-blue inline-block"></span> Waktu Aktual</span>
+            <span class="inline-flex items-center gap-gutter-xs"><span class="w-4 h-0.5 border-t-2 border-dashed border-chart-orange inline-block"></span> Prediksi ANFIS</span>
+          </div>
+        </div>
+
+        <div class="rounded border border-light-outline-variant bg-light-surface p-gutter-md">
+          <svg viewBox="0 0 960 280" class="w-full h-auto" role="img" aria-label="Perbandingan Waktu Aktual vs Prediksi ANFIS">
+            <!-- Gridlines -->
+            <g stroke="#E6EAF1" stroke-dasharray="4 4" stroke-width="1">
+              <line x1="64" y1="24" x2="936" y2="24"></line>
+              <line x1="64" y1="74" x2="936" y2="74"></line>
+              <line x1="64" y1="124" x2="936" y2="124"></line>
+              <line x1="64" y1="174" x2="936" y2="174"></line>
+              <line x1="64" y1="224" x2="936" y2="224"></line>
+            </g>
+            <!-- Axes -->
+            <line x1="64" y1="24" x2="64" y2="224" stroke="#808495" stroke-width="1.2"></line>
+            <line x1="64" y1="224" x2="936" y2="224" stroke="#808495" stroke-width="1.2"></line>
+            <!-- Y Labels -->
+            <g fill="#555867" font-size="11" font-family="Source Sans 3, sans-serif" text-anchor="end">
+              <text x="56" y="28">100</text>
+              <text x="56" y="78">80</text>
+              <text x="56" y="128">60</text>
+              <text x="56" y="178">40</text>
+              <text x="56" y="228">20</text>
+            </g>
+            <!-- X Labels -->
+            <g fill="#555867" font-size="11" font-family="Source Sans 3, sans-serif" text-anchor="middle">
+              <text x="64" y="242">0</text>
+              <text x="209" y="242">10</text>
+              <text x="354" y="242">20</text>
+              <text x="500" y="242">30</text>
+              <text x="645" y="242">40</text>
+              <text x="790" y="242">50</text>
+              <text x="936" y="242">60</text>
+              <text x="500" y="264" font-weight="600" fill="#31333F">Indeks Sampel Uji</text>
+            </g>
+            <text x="18" y="124" font-size="11" font-weight="600" fill="#31333F" font-family="Source Sans 3, sans-serif" transform="rotate(-90 18 124)" text-anchor="middle">Waktu Pengantaran (menit)</text>
+            <!-- Actual solid blue line -->
+            <polyline fill="none" stroke="#1F77B4" stroke-width="2" points="64,166 112,72 160,126 209,182 257,104 305,212 354,152 402,58 451,189 500,134 548,162 596,92 645,148 693,196 742,84 790,138 838,176 887,112 936,144"></polyline>
+            <!-- Circle markers on Actual -->
+            <g fill="#1F77B4">
+              <circle cx="64" cy="166" r="3.5"></circle><circle cx="112" cy="72" r="3.5"></circle><circle cx="160" cy="126" r="3.5"></circle><circle cx="209" cy="182" r="3.5"></circle><circle cx="257" cy="104" r="3.5"></circle><circle cx="305" cy="212" r="3.5"></circle><circle cx="354" cy="152" r="3.5"></circle><circle cx="402" cy="58" r="3.5"></circle><circle cx="451" cy="189" r="3.5"></circle><circle cx="500" cy="134" r="3.5"></circle><circle cx="548" cy="162" r="3.5"></circle><circle cx="596" cy="92" r="3.5"></circle><circle cx="645" cy="148" r="3.5"></circle><circle cx="693" cy="196" r="3.5"></circle><circle cx="742" cy="84" r="3.5"></circle><circle cx="790" cy="138" r="3.5"></circle><circle cx="838" cy="176" r="3.5"></circle><circle cx="887" cy="112" r="3.5"></circle><circle cx="936" cy="144" r="3.5"></circle>
+            </g>
+            <!-- Predicted dashed orange line -->
+            <polyline fill="none" stroke="#FF7F0E" stroke-width="2" stroke-dasharray="6 4" points="64,160 112,80 160,131 209,174 257,112 305,204 354,146 402,68 451,181 500,140 548,156 596,98 645,142 693,188 742,91 790,144 838,169 887,118 936,149"></polyline>
+            <!-- X markers on Predicted -->
+            <g stroke="#FF7F0E" stroke-width="1.8">
+              <path d="M61,157 L67,163 M67,157 L61,163"></path><path d="M109,77 L115,83 M115,77 L109,83"></path><path d="M157,128 L163,134 M163,128 L157,134"></path><path d="M206,171 L212,177 M212,171 L206,177"></path><path d="M254,109 L260,115 M260,109 L254,115"></path><path d="M302,201 L308,207 M308,201 L302,207"></path><path d="M351,143 L357,149 M357,143 L351,149"></path><path d="M399,65 L405,71 M405,65 L399,71"></path><path d="M448,178 L454,184 M454,178 L448,184"></path><path d="M497,137 L503,143 M503,137 L497,143"></path><path d="M545,153 L551,159 M551,153 L545,159"></path><path d="M593,95 L599,101 M599,95 L593,101"></path><path d="M642,139 L648,145 M648,139 L642,145"></path><path d="M690,185 L696,191 M696,185 L690,191"></path><path d="M739,88 L745,94 M745,88 L739,94"></path><path d="M787,141 L793,147 M793,141 L787,147"></path><path d="M835,166 L841,172 M841,166 L835,172"></path><path d="M884,115 L890,121 M890,115 L884,121"></path><path d="M933,146 L939,152 M939,146 L933,152"></path>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Evaluation Comparison Table -->
+      <section class="flex flex-col gap-gutter-sm">
+        <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="w-full overflow-x-auto rounded border border-light-outline-variant bg-light-surface">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-light-surface-container-low border-b border-light-outline-variant">
+              <tr>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Sampel #</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Waktu Aktual (menit)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Prediksi ANFIS (menit)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Selisih Error Absolut (menit)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-light-outline-variant font-body text-body-sm text-light-on-surface tabular-nums">
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">1</td><td class="px-gutter-md py-gutter-sm text-right">43.00</td><td class="px-gutter-md py-gutter-sm text-right">45.42</td><td class="px-gutter-md py-gutter-sm text-right">2.42</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">2</td><td class="px-gutter-md py-gutter-sm text-right">84.00</td><td class="px-gutter-md py-gutter-sm text-right">80.15</td><td class="px-gutter-md py-gutter-sm text-right">3.85</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">3</td><td class="px-gutter-md py-gutter-sm text-right">59.00</td><td class="px-gutter-md py-gutter-sm text-right">56.88</td><td class="px-gutter-md py-gutter-sm text-right">2.12</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">4</td><td class="px-gutter-md py-gutter-sm text-right">37.00</td><td class="px-gutter-md py-gutter-sm text-right">40.14</td><td class="px-gutter-md py-gutter-sm text-right">3.14</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">5</td><td class="px-gutter-md py-gutter-sm text-right">68.00</td><td class="px-gutter-md py-gutter-sm text-right">64.70</td><td class="px-gutter-md py-gutter-sm text-right">3.30</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm text-right text-light-on-surface-variant">6</td><td class="px-gutter-md py-gutter-sm text-right">15.00</td><td class="px-gutter-md py-gutter-sm text-right">18.45</td><td class="px-gutter-md py-gutter-sm text-right">3.45</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+
+</body></html>
+
+<!-- 6. Informasi Sistem & 32 Aturan -->
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6. Informasi Sistem &amp; 32 Aturan — ANFIS</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'streamlit-red': '#FF4B4B',
+        'chart-blue': '#1F77B4',
+        'chart-orange': '#FF7F0E',
+        'light-primary': '#C81E2B',
+        'light-on-primary': '#FFFFFF',
+        'light-surface': '#FFFFFF',
+        'light-surface-container-low': '#F0F2F6',
+        'light-surface-container': '#F8F9FB',
+        'light-on-surface': '#31333F',
+        'light-on-surface-variant': '#555867',
+        'light-outline': '#808495',
+        'light-outline-variant': '#E6EAF1',
+        'light-info': '#EBF3FE',
+        'light-on-info': '#0C3B78',
+        'light-info-border': '#BFD6F6',
+        'light-success': '#E7F6EC',
+        'light-on-success': '#0F5132',
+        'light-success-border': '#B7E4C7',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '8px',
+        'lg': '12px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '32px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Source Sans 3"', 'sans-serif'],
+        'body': ['"Source Sans 3"', 'sans-serif'],
+        'label': ['"Source Sans 3"', 'sans-serif'],
+        'metric': ['"Source Sans 3"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['34px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '600' }],
+        'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.15px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '500' }],
+        'metric-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'mono-sm': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=Source+Code+Pro:wght@400;500&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface text-light-on-surface font-body antialiased" data-stitch-vh="min-h-[1024px]===min-h-screen">
+  <div class="mx-auto px-gutter-xl py-gutter-xl flex flex-col gap-gutter-lg" style="max-width: 1200px;">
+
+    <!-- Top Header Section -->
+    <header class="flex flex-col gap-gutter-xs">
+      <div class="flex items-center gap-gutter-sm">
+        <span class="material-symbols-outlined text-streamlit-red text-[32px] shrink-0" aria-hidden="true">delivery_dining</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-light-on-surface text-balance" data-design-text-token="display-lg">
+          Estimasi Waktu Tiba Pengantaran Makanan Berbasis ANFIS
+        </h1>
+      </div>
+      <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+        Adaptive Neuro-Fuzzy Inference System (5 Input, 2 MF Gaussian, 32 Aturan Sugeno Orde-1)
+      </p>
+    </header>
+
+    <!-- Horizontal Streamlit Tab Bar -->
+    <nav aria-label="Navigasi Utama ANFIS">
+      <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon" class="w-full">
+        <div role="tablist" aria-label="Halaman Aplikasi ANFIS" class="flex items-center gap-gutter-lg border-b border-light-outline-variant overflow-x-auto">
+          <a href="../tab-1-beranda-prediksi/BerandaPrediksi.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">home</span>
+            <span data-design-text-token="label-md">1. Beranda &amp; Prediksi Utama</span>
+          </a>
+          <a href="../tab-2-dataset-preprocessing/DatasetPreprocessing.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">database</span>
+            <span data-design-text-token="label-md">2. Dataset &amp; Preprocessing</span>
+          </a>
+          <a href="../tab-3-pelatihan-model/PelatihanModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">model_training</span>
+            <span data-design-text-token="label-md">3. Pelatihan Model (Training)</span>
+          </a>
+          <a href="../tab-4-simulasi-5-lapisan/Simulasi5Lapisan.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">tune</span>
+            <span data-design-text-token="label-md">4. Simulasi &amp; Inspeksi 5 Lapisan</span>
+          </a>
+          <a href="../tab-5-evaluasi-model/EvaluasiModel.html" role="tab" aria-selected="false" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-transparent text-light-on-surface-variant hover:text-streamlit-red font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">analytics</span>
+            <span data-design-text-token="label-md">5. Evaluasi Model</span>
+          </a>
+          <a href="../tab-6-informasi-sistem/InformasiSistem.html" role="tab" aria-selected="true" class="inline-flex items-center gap-gutter-xs py-gutter-sm border-b-2 border-streamlit-red text-light-primary font-label text-label-md whitespace-nowrap shrink-0 transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+            <span data-design-text-token="label-md">6. Informasi Sistem &amp; 32 Aturan</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content inside Tab 6 -->
+    <main class="flex flex-col gap-gutter-lg pt-gutter-xs">
+
+      <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+        Informasi Sistem, Parameter Akhir &amp; Panduan Penggunaan
+      </h2>
+
+      <!-- Numbered usage guide list (1 to 5) -->
+      <section class="rounded bg-light-surface-container-low border border-light-outline-variant p-gutter-md">
+        <ol class="list-decimal list-inside flex flex-col gap-gutter-xs font-body text-body-md text-light-on-surface">
+          <li><strong>Beranda &amp; Prediksi Utama:</strong> Memprediksi waktu pengantaran menggunakan kondisi operasional deterministik berbasis seed atau input jarak manual.</li>
+          <li><strong>Dataset &amp; Preprocessing:</strong> Mengunggah atau memuat dataset CSV lokal, membersihkan nilai hilang, dan membagi data latih (80%) serta uji (20%).</li>
+          <li><strong>Pelatihan Model (Training):</strong> Mengatur epoch, learning rate, dan regularisasi LSE untuk melatih parameter premis dan konsekuen ANFIS.</li>
+          <li><strong>Simulasi &amp; Inspeksi 5 Lapisan:</strong> Menguji skenario bebas dan memvalidasi derajat keanggotaan Gaussian hingga agregasi 32 aturan Sugeno.</li>
+          <li><strong>Evaluasi Model:</strong> Mengukur performa generalisasi model pada data uji menggunakan metrik RMSE, MAE, R², serta grafik aktual vs prediksi.</li>
+        </ol>
+      </section>
+
+      <!-- Section 1: Parameter Premis Gaussian Terlatih -->
+      <section class="flex flex-col gap-gutter-sm">
+        <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+          1. Parameter Premis Gaussian Terlatih (c dan σ):
+        </h3>
+        <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="w-full overflow-x-auto rounded border border-light-outline-variant bg-light-surface">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-light-surface-container-low border-b border-light-outline-variant">
+              <tr>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant">Variabel Input</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Center Rendah (c0)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Sigma Rendah (σ0)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Center Tinggi (c1)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">Sigma Tinggi (σ1)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-light-outline-variant font-body text-body-sm text-light-on-surface tabular-nums">
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Distance_km</td><td class="px-gutter-md py-gutter-sm text-right">0.0412</td><td class="px-gutter-md py-gutter-sm text-right">0.3821</td><td class="px-gutter-md py-gutter-sm text-right">0.9640</td><td class="px-gutter-md py-gutter-sm text-right">0.4105</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Preparation_Time_min</td><td class="px-gutter-md py-gutter-sm text-right">0.0285</td><td class="px-gutter-md py-gutter-sm text-right">0.4120</td><td class="px-gutter-md py-gutter-sm text-right">0.9812</td><td class="px-gutter-md py-gutter-sm text-right">0.4288</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Courier_Experience_yrs</td><td class="px-gutter-md py-gutter-sm text-right">0.0190</td><td class="px-gutter-md py-gutter-sm text-right">0.4055</td><td class="px-gutter-md py-gutter-sm text-right">0.9725</td><td class="px-gutter-md py-gutter-sm text-right">0.4010</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Traffic_Level</td><td class="px-gutter-md py-gutter-sm text-right">0.0315</td><td class="px-gutter-md py-gutter-sm text-right">0.4180</td><td class="px-gutter-md py-gutter-sm text-right">0.9588</td><td class="px-gutter-md py-gutter-sm text-right">0.4221</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-sm font-mono text-mono-sm">Weather</td><td class="px-gutter-md py-gutter-sm text-right">0.0148</td><td class="px-gutter-md py-gutter-sm text-right">0.3980</td><td class="px-gutter-md py-gutter-sm text-right">0.9790</td><td class="px-gutter-md py-gutter-sm text-right">0.3945</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2: Matriks Parameter Konsekuen Sugeno Orde-1 -->
+      <section class="flex flex-col gap-gutter-sm">
+        <h3 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+          2. Matriks Parameter Konsekuen Sugeno Orde-1 (p1...p5, q) untuk 32 Aturan:
+        </h3>
+        <div data-component-id="table-scrollable" data-component-type="table" data-component-variant="standard" class="w-full overflow-x-auto max-h-80 overflow-y-auto rounded border border-light-outline-variant bg-light-surface">
+          <table class="w-full text-left border-collapse">
+            <thead class="sticky top-0 bg-light-surface-container-low border-b border-light-outline-variant">
+              <tr>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant">Aturan</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">p1 (Dist)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">p2 (Prep)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">p3 (Exp)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">p4 (Traffic)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">p5 (Weather)</th>
+                <th scope="col" class="px-gutter-md py-gutter-sm font-label text-label-sm text-light-on-surface-variant text-right">q (Konstanta)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-light-outline-variant font-body text-body-sm text-light-on-surface tabular-nums">
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 1</td><td class="px-gutter-md py-gutter-xs text-right">48.120</td><td class="px-gutter-md py-gutter-xs text-right">21.450</td><td class="px-gutter-md py-gutter-xs text-right">-5.840</td><td class="px-gutter-md py-gutter-xs text-right">9.120</td><td class="px-gutter-md py-gutter-xs text-right">7.410</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">6.250</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 2</td><td class="px-gutter-md py-gutter-xs text-right">49.040</td><td class="px-gutter-md py-gutter-xs text-right">22.110</td><td class="px-gutter-md py-gutter-xs text-right">-6.120</td><td class="px-gutter-md py-gutter-xs text-right">9.840</td><td class="px-gutter-md py-gutter-xs text-right">8.950</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">7.140</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 3</td><td class="px-gutter-md py-gutter-xs text-right">51.320</td><td class="px-gutter-md py-gutter-xs text-right">20.890</td><td class="px-gutter-md py-gutter-xs text-right">-5.410</td><td class="px-gutter-md py-gutter-xs text-right">11.240</td><td class="px-gutter-md py-gutter-xs text-right">7.620</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">8.020</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 4</td><td class="px-gutter-md py-gutter-xs text-right">52.180</td><td class="px-gutter-md py-gutter-xs text-right">23.040</td><td class="px-gutter-md py-gutter-xs text-right">-5.920</td><td class="px-gutter-md py-gutter-xs text-right">11.880</td><td class="px-gutter-md py-gutter-xs text-right">9.140</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">8.890</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 5</td><td class="px-gutter-md py-gutter-xs text-right">46.900</td><td class="px-gutter-md py-gutter-xs text-right">19.750</td><td class="px-gutter-md py-gutter-xs text-right">-6.850</td><td class="px-gutter-md py-gutter-xs text-right">8.910</td><td class="px-gutter-md py-gutter-xs text-right">6.980</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">5.740</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 6</td><td class="px-gutter-md py-gutter-xs text-right">47.620</td><td class="px-gutter-md py-gutter-xs text-right">20.410</td><td class="px-gutter-md py-gutter-xs text-right">-7.040</td><td class="px-gutter-md py-gutter-xs text-right">9.450</td><td class="px-gutter-md py-gutter-xs text-right">8.520</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">6.610</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 7</td><td class="px-gutter-md py-gutter-xs text-right">50.150</td><td class="px-gutter-md py-gutter-xs text-right">21.920</td><td class="px-gutter-md py-gutter-xs text-right">-6.310</td><td class="px-gutter-md py-gutter-xs text-right">10.890</td><td class="px-gutter-md py-gutter-xs text-right">7.240</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">7.450</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 8</td><td class="px-gutter-md py-gutter-xs text-right">51.040</td><td class="px-gutter-md py-gutter-xs text-right">22.580</td><td class="px-gutter-md py-gutter-xs text-right">-6.720</td><td class="px-gutter-md py-gutter-xs text-right">11.420</td><td class="px-gutter-md py-gutter-xs text-right">8.880</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">8.310</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 9..31</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">54.210</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">24.180</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">-5.120</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">12.450</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">9.650</td><td class="px-gutter-md py-gutter-xs text-right text-light-on-surface-variant">9.480</td></tr>
+              <tr class="hover:bg-light-surface-container"><td class="px-gutter-md py-gutter-xs font-mono text-mono-sm">Rule 32</td><td class="px-gutter-md py-gutter-xs text-right">62.840</td><td class="px-gutter-md py-gutter-xs text-right">27.910</td><td class="px-gutter-md py-gutter-xs text-right">-4.350</td><td class="px-gutter-md py-gutter-xs text-right">14.620</td><td class="px-gutter-md py-gutter-xs text-right">11.840</td><td class="px-gutter-md py-gutter-xs text-right font-semibold">12.140</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+
+</body></html>
