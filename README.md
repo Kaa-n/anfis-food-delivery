@@ -38,24 +38,33 @@ Sistem ini memodelkan hubungan non-linear tersebut menggunakan arsitektur **ANFI
 anfis-food-delivery/
 ├── data/
 │   ├── .gitkeep
-│   └── Food_Delivery_Times.csv     # Dataset utama dari Kaggle
+│   └── Food_Delivery_Times.csv      # Dataset utama dari Kaggle
 ├── src/
-│   ├── __init__.py                 # Penanda paket modul src & ringkasan penanggung jawab
-│   ├── preprocessing.py            # Pembersihan NaN, encoding, split 80:20, Min-Max scaling
-│   ├── context_generator.py        # Generator kondisi operasional berbasis seed tanggal & jam
-│   ├── lapis1.py                   # Lapisan 1: Fuzzifikasi Gaussian & Update Premis (GD)
-│   ├── lapis2.py                   # Lapisan 2: Pembangkitan 32 Aturan & Firing Strength
-│   ├── lapis3.py                   # Lapisan 3: Normalisasi Firing Strength
-│   ├── lapis4.py                   # Lapisan 4: Defuzzifikasi Sugeno Orde-1 & Optimasi LSE
-│   ├── lapis5.py                   # Lapisan 5: Agregasi Output Akhir & Perhitungan RMSE
-│   └── anfis.py                    # Orkestrator utama yang menghubungkan Lapisan 1 - 5
-├── app.py                          # Antarmuka grafis utama berbasis Streamlit
-├── Dockerfile                      # Konfigurasi image Docker aplikasi
-├── docker-compose.yml              # Orkestrasi container Docker
-├── requirements.txt                # Daftar pustaka Python yang digunakan
-├── .dockerignore                   # Pengecualian file saat build Docker
-├── .gitignore                      # Pengecualian file saat push ke GitHub
-└── README.md                       # Dokumentasi proyek dan panduan tim
+│   ├── __init__.py                  # Penanda paket modul src & ringkasan penanggung jawab
+│   ├── preprocessing.py             # Pembersihan NaN, encoding, split 80:20, Min-Max scaling
+│   ├── context_generator.py         # Generator kondisi operasional berbasis seed tanggal & jam
+│   ├── lapis1.py                    # Lapisan 1: Fuzzifikasi Gaussian & Update Premis (GD)
+│   ├── lapis2.py                    # Lapisan 2: Pembangkitan 32 Aturan & Firing Strength
+│   ├── lapis3.py                    # Lapisan 3: Normalisasi Firing Strength
+│   ├── lapis4.py                    # Lapisan 4: Defuzzifikasi Sugeno Orde-1 & Optimasi LSE
+│   ├── lapis5.py                    # Lapisan 5: Agregasi Output Akhir & Perhitungan RMSE
+│   └── anfis.py                     # Orkestrator utama yang menghubungkan Lapisan 1 - 5
+├── tabs/
+│   ├── __init__.py                  # Penanda paket modul UI & ekspor fungsi render tiap tab
+│   ├── components.py                # Komponen UI bersama, CSS layout, fallback & inspeksi 5 lapisan
+│   ├── tab1_beranda.py              # Tab 1: Beranda, live seed kondisi operasional & prediksi cepat
+│   ├── tab2_dataset.py              # Tab 2: Manajemen dataset CSV, preprocessing & pratinjau data
+│   ├── tab3_training.py             # Tab 3: Konfigurasi Hybrid Learning, grafik RMSE & kurva Gaussian
+│   ├── tab4_simulasi.py             # Tab 4: Simulasi skenario bebas & validasi perhitungan Lapisan 1-5
+│   ├── tab5_evaluasi.py             # Tab 5: Evaluasi data uji (RMSE, MAE, R2) & grafik aktual vs prediksi
+│   └── tab6_informasi.py            # Tab 6: Panduan sistem, parameter premis & matriks 32 aturan Sugeno
+├── app.py                           # Entry point utama Streamlit, session state & navigasi 6 tab
+├── Dockerfile                       # Konfigurasi image Docker aplikasi
+├── docker-compose.yml               # Orkestrasi container Docker
+├── requirements.txt                 # Daftar pustaka Python yang digunakan
+├── .dockerignore                    # Pengecualian file saat build Docker
+├── .gitignore                       # Pengecualian file saat push ke GitHub
+└── README.md                        # Dokumentasi proyek dan panduan tim
 ```
 
 ## Panduan Instalasi & Menjalankan Aplikasi
