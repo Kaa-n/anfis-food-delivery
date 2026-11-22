@@ -38,12 +38,26 @@ import numpy as np
 
 def forward_lapis5(o4):
   # Jumlahkan seluruh keluaran Lapisan 4 menjadi output prediksi tunggal
+  o4 = np.asarray(o4, dtype=float)
+  if o4.ndim != 2 or o4.shape[1] != 32:
+    raise ValueError("o4 harus memiliki shape (N, 32).")
+  if not np.all(np.isfinite(o4)):
+    raise ValueError("o4 mengandung NaN atau infinity.")
+
   y_pred = np.sum(o4, axis=1)
   return y_pred
 
 
 def compute_rmse(y_pred, y_true):
   # Hitung Root Mean Squared Error (RMSE) antara y_pred dan y_true
+  y_pred = np.asarray(y_pred, dtype=float).reshape(-1)
+  y_true = np.asarray(y_true, dtype=float).reshape(-1)
+
+  if y_pred.shape != y_true.shape or y_pred.size == 0:
+    raise ValueError("y_pred dan y_true harus memiliki panjang sama (N > 0).")
+  if not np.all(np.isfinite(y_pred)) or not np.all(np.isfinite(y_true)):
+    raise ValueError("y_pred dan y_true tidak boleh mengandung NaN atau infinity.")
+
   error = y_pred - y_true
   rmse = np.sqrt(np.mean(error ** 2))
   return float(rmse)

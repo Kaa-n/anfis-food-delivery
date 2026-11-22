@@ -6,6 +6,7 @@ Tab 2: Dataset & Preprocessing
 - Pratinjau 10 baris data setelah cleaning & encoding serta statistik deskriptif.
 """
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -28,19 +29,60 @@ WEATHER_LABELS = {
 }
 
 
-def create_histogram(series, bins=10):
-    """Membuat data histogram untuk visualisasi Streamlit."""
-    counts, edges = np.histogram(series.dropna(), bins=bins)
+def plot_histogram(series, xlabel, bins=10, color="#1F77B4"):
+    """Membuat grafik histogram dengan sumbu-X numerik yang terurut rapi."""
+    data = series.dropna()
+    fig, ax = plt.subplots(figsize=(5.5, 3.0))
 
-    labels = [
-        f"{edges[i]:.1f} - {edges[i + 1]:.1f}"
-        for i in range(len(counts))
-    ]
-
-    return pd.DataFrame(
-        {"Jumlah Data": counts},
-        index=labels
+    _, edges, _ = ax.hist(
+        data,
+        bins=bins,
+        color=color,
+        edgecolor="white",
+        linewidth=1.0,
+        alpha=0.9,
     )
+
+    ax.set_xticks(edges)
+    ax.set_xticklabels([f"{edge:.1f}" for edge in edges], rotation=35, ha="right", fontsize=8)
+    ax.set_xlabel(xlabel, fontsize=9)
+    ax.set_ylabel("Jumlah Data", fontsize=9)
+    ax.grid(True, axis="y", linestyle="--", alpha=0.4, color="#CBD5E1")
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    fig.tight_layout()
+    return fig
+
+
+def plot_category_bar(series, label_map, xlabel, color="#1F77B4"):
+    """Membuat diagram batang kategori sesuai urutan skala ordinal (bukan alfabetis)."""
+    ordered_keys = sorted(label_map.keys())
+    counts = series.value_counts().reindex(ordered_keys, fill_value=0)
+    labels = [label_map[k] for k in ordered_keys]
+
+    fig, ax = plt.subplots(figsize=(5.5, 3.0))
+    bars = ax.bar(labels, counts.values, color=color, width=0.55, alpha=0.9)
+
+    for bar in bars:
+        height = bar.get_height()
+        ax.annotate(
+            f"{int(height)}",
+            xy=(bar.get_x() + bar.get_width() / 2, height),
+            xytext=(0, 3),
+            textcoords="offset points",
+            ha="center",
+            va="bottom",
+            fontsize=8,
+        )
+
+    ax.set_xlabel(xlabel, fontsize=9)
+    ax.set_ylabel("Jumlah Data", fontsize=9)
+    ax.set_ylim(0, max(counts.values) * 1.15 if len(counts) > 0 else 1)
+    ax.grid(True, axis="y", linestyle="--", alpha=0.4, color="#CBD5E1")
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    fig.tight_layout()
+    return fig
 
 
 def render_tab2_dataset():
@@ -202,74 +244,48 @@ def render_tab2_dataset():
 
     with col1:
         st.markdown("**Distribusi Jarak Pengantaran**")
-        st.bar_chart(
-            create_histogram(df_clean["Distance_km"]),
-            use_container_width=True,
-        )
+        fig1 = plot_histogram(df_clean["Distance_km"], "Jarak (km)")
+        st.pyplot(fig1, use_container_width=True)
+        plt.close(fig1)
 
     with col2:
         st.markdown("**Distribusi Waktu Persiapan**")
-        st.bar_chart(
-            create_histogram(df_clean["Preparation_Time_min"]),
-            use_container_width=True,
-        )
+        fig2 = plot_histogram(df_clean["Preparation_Time_min"], "Waktu Persiapan (menit)")
+        st.pyplot(fig2, use_container_width=True)
+        plt.close(fig2)
 
     col3, col4 = st.columns(2)
 
     with col3:
         st.markdown("**Distribusi Pengalaman Kurir**")
-        st.bar_chart(
-            create_histogram(df_clean["Courier_Experience_yrs"]),
-            use_container_width=True,
-        )
+        fig3 = plot_histogram(df_clean["Courier_Experience_yrs"], "Pengalaman (tahun)")
+        st.pyplot(fig3, use_container_width=True)
+        plt.close(fig3)
 
     with col4:
         st.markdown("**Distribusi Waktu Pengantaran**")
-        st.bar_chart(
-            create_histogram(df_clean[TARGET_COL]),
-            use_container_width=True,
-        )
+        fig4 = plot_histogram(df_clean[TARGET_COL], "Waktu Pengantaran (menit)")
+        st.pyplot(fig4, use_container_width=True)
+        plt.close(fig4)
 
     # Distribusi kategori setelah ordinal encoding
     col5, col6 = st.columns(2)
 
     with col5:
         st.markdown("**Distribusi Tingkat Lalu Lintas**")
-
-        traffic_counts = (
-            df_clean["Traffic_Level"]
-            .value_counts()
-            .sort_index()
+        fig5 = plot_category_bar(
+            df_clean["Traffic_Level"], TRAFFIC_LABELS, "Tingkat Kemacetan"
         )
-
-        traffic_counts.index = [
-            TRAFFIC_LABELS.get(float(value), str(value))
-            for value in traffic_counts.index
-        ]
-
-        st.bar_chart(
-            traffic_counts,
-            use_container_width=True,
-        )
+        st.pyplot(fig5, use_container_width=True)
+        plt.close(fig5)
 
     with col6:
         st.markdown("**Distribusi Kondisi Cuaca**")
-
-        weather_counts = (
-            df_clean["Weather"]
-            .value_counts()
-            .sort_index()
+        fig6 = plot_category_bar(
+            df_clean["Weather"], WEATHER_LABELS, "Kondisi Cuaca"
         )
-
-        weather_counts.index = [
-            WEATHER_LABELS.get(float(value), str(value))
-            for value in weather_counts.index
-        ]
-
-        st.bar_chart(
-            weather_counts,
-            use_container_width=True,
-        )
+        st.pyplot(fig6, use_container_width=True)
+        plt.close(fig6)
 
     # ==================================================
     # 6. INFORMASI NORMALISASI MIN-MAX

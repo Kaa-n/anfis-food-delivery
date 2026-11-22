@@ -99,4 +99,10 @@ class ANFIS:
                 X, mu, w, f, y_pred, y, self.rules, self.c, self.sigma, self.lr
             )
 
+        # Sinkronisasi akhir konsekuen LSE agar selaras dengan c & sigma hasil GD epoch terakhir
+        mu = forward_lapis1(X, self.c, self.sigma)
+        w = forward_lapis2(mu, self.rules)
+        w_bar = forward_lapis3(w)
+        self.consequents = update_consequents_lse(X, y, w_bar, reg=self.reg)
+
         return self.loss_history

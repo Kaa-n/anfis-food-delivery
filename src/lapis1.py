@@ -226,8 +226,8 @@ def backward_lapis1(X, mu, w, f, y_pred, y_true,
             )
 
             # Rata-rata gradien seluruh sampel.
-            grad_c[i, j] = np.mean(dE_dmu * dmu_dc)
-            grad_sigma[i, j] = np.mean(dE_dmu * dmu_dsigma)
+            grad_c[i, j] = np.sum(dE_dmu * dmu_dc)
+            grad_sigma[i, j] = np.sum(dE_dmu * dmu_dsigma)
 
     # 3. Gradient clipping.
     grad_c = np.clip(grad_c, -1.0, 1.0)

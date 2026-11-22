@@ -60,26 +60,6 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-FEATURE_COLS = [
-    "Distance_km",
-    "Preparation_Time_min",
-    "Courier_Experience_yrs",
-    "Traffic_Level",
-    "Weather",
-]
-TARGET_COL = "Delivery_Time_min"
-
-TRAFFIC_MAP = {"Low": 1.0, "Medium": 2.0, "High": 3.0}
-WEATHER_MAP = {
-    "Clear": 1.0,
-    "Windy": 2.0,
-    "Foggy": 3.0,
-    "Rainy": 4.0,
-    "Snowy": 5.0,
-}
-
-EPSILON = 1e-8
-
 
 FEATURE_COLS = [
     "Distance_km",
