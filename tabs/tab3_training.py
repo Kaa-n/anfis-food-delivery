@@ -8,6 +8,7 @@ Tab 3: Pelatihan Model (Training)
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import streamlit as st
 from tabs.components import ANFISClass, FEATURE_COLS
 
@@ -52,15 +53,42 @@ def render_tab3_training():
         icon=":material/play_arrow:",
         key="tab3_train_btn",
     ):
-        with st.spinner("Menjalankan Hybrid Learning (LSE + Gradient Descent)..."):
-            anfis_model = ANFISClass(n_inputs=5, lr=lr, reg=reg)
-            anfis_model.fit(X_train, y_train, epochs=epochs)
-            st.session_state.model = anfis_model
+        try:
+            with st.spinner("Menjalankan Hybrid Learning (LSE + Gradient Descent)..."):
+                anfis_model = ANFISClass(n_inputs=5, lr=lr, reg=reg)
+                anfis_model.fit(X_train, y_train, epochs=epochs)
+                if (not anfis_model.loss_history or
+                        not np.all(np.isfinite(anfis_model.loss_history))):
+                    raise ValueError("Riwayat RMSE kosong atau tidak finite.")
+                st.session_state.model = anfis_model
+        except (ValueError, FloatingPointError, np.linalg.LinAlgError) as exc:
+            st.error(f"Pelatihan gagal: {exc}", icon=":material/error:")
 
     if st.session_state.model is not None:
         model = st.session_state.model
+        if not model.loss_history:
+            st.info("Model belum memiliki riwayat pelatihan.")
+            return
+        final_prediction = model.forward_layers(X_train)[-1]
+        final_rmse = float(np.sqrt(np.mean((final_prediction - y_train) ** 2)))
+        st.metric("RMSE model tersimpan (normalisasi)", f"{final_rmse:.6f}")
+        st.caption(
+            f"Konfigurasi model: {len(model.loss_history)} epoch; "
+            f"learning rate = {model.lr}; lambda = {model.reg}. "
+            "Riwayat dicatat sesudah LSE, sebelum pembaruan premis GD tiap epoch."
+        )
+        history_df = pd.DataFrame({
+            "Epoch": range(1, len(model.loss_history) + 1),
+            "RMSE_normalisasi_sebelum_GD": model.loss_history,
+        })
+        st.download_button(
+            "Unduh riwayat RMSE (CSV)",
+            history_df.to_csv(index=False).encode("utf-8-sig"),
+            "riwayat_training.csv", "text/csv",
+            icon=":material/download:", key="tab3_export",
+        )
         st.success(
-            f"Pelatihan selesai! RMSE Akhir (Skala Normalisasi): {model.loss_history[-1]:.4f}",
+            f"Pelatihan selesai! RMSE riwayat epoch terakhir (sebelum GD): {model.loss_history[-1]:.4f}",
             icon=":material/check_circle:",
         )
 
