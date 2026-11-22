@@ -24,10 +24,10 @@ Penanggung Jawab : Anggota 5
      * Output : nilai RMSE (float)
 
 3. INSTRUKSI PENGERJAAN (TODO):
-   [ ] TODO 1: Pada `forward_lapis5`, jumlahkan seluruh kolom aturan pada `o4`
+   [x] TODO 1: Pada `forward_lapis5`, jumlahkan seluruh kolom aturan pada `o4`
                menggunakan `np.sum(o4, axis=1)` sehingga menghasilkan array 1D
                berukuran `(N,)`.
-   [ ] TODO 2: Pada `compute_rmse`, hitung selisih `error = y_pred - y_true`,
+   [x] TODO 2: Pada `compute_rmse`, hitung selisih `error = y_pred - y_true`,
                kuadratkan, ambil rata-ratanya (`np.mean`), lalu akarkan (`np.sqrt`),
                dan kembalikan dalam tipe `float`.
 ================================================================================
@@ -37,10 +37,13 @@ import numpy as np
 
 
 def forward_lapis5(o4):
-  # TODO: Jumlahkan seluruh keluaran Lapisan 4 menjadi output prediksi tunggal
-  pass
+  # Jumlahkan seluruh keluaran Lapisan 4 menjadi output prediksi tunggal
+  y_pred = np.sum(o4, axis=1)
+  return y_pred
 
 
 def compute_rmse(y_pred, y_true):
-  # TODO: Hitung Root Mean Squared Error (RMSE) antara y_pred dan y_true
-  pass
+  # Hitung Root Mean Squared Error (RMSE) antara y_pred dan y_true
+  error = y_pred - y_true
+  rmse = np.sqrt(np.mean(error ** 2))
+  return float(rmse)
