@@ -75,7 +75,7 @@ Setiap anggota tim dapat menjalankan aplikasi melalui **Virtual Environment (`ve
 
 1. **Clone repository dari GitHub:**
    ```bash
-   git clone https://github.com/USERNAME_ANDA/anfis-food-delivery.git
+   git clone https://github.com/Kaa-n/anfis-food-delivery.git
    cd anfis-food-delivery
    ```
 
