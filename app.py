@@ -11,6 +11,7 @@ import os
 import pandas as pd
 import streamlit as st
 
+from ekstrak_model import MODEL_PATH, muat_model_terbaik
 from tabs import (
     render_tab1_beranda,
     render_tab2_dataset,
@@ -35,7 +36,7 @@ st.set_page_config(
 inject_custom_css()
 
 # ==============================================================================
-# INISIALISASI SESSION STATE & DATASET AWAL
+# INISIALISASI SESSION STATE, DATASET AWAL & MODEL TERBAIK
 # ==============================================================================
 if "df_raw" not in st.session_state:
     default_path = os.path.join("data", "Food_Delivery_Times.csv")
@@ -54,6 +55,19 @@ if "data_pack" not in st.session_state:
 
 if "model" not in st.session_state:
     st.session_state.model = None
+    if st.session_state.data_pack is not None:
+        try:
+            hasil_muat = muat_model_terbaik(MODEL_PATH)
+            if hasil_muat is not None:
+                model_siap, _, artefak = hasil_muat
+                st.session_state.model = model_siap
+                st.session_state.train_config = {
+                    "epochs": artefak["epochs"],
+                    "lr": artefak["lr"],
+                    "reg": artefak["reg"],
+                }
+        except Exception:
+            st.session_state.model = None
 
 # ==============================================================================
 # HEADER UTAMA & NAVIGASI 6 TAB HORIZONTAL

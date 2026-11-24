@@ -30,20 +30,20 @@ def render_tab3_training():
         "Jumlah Epoch",
         min_value=10,
         max_value=1000,
-        value=50,
+        value=10,
         step=10,
         key="tab3_epochs",
     )
     lr = col_p2.select_slider(
         "Learning Rate (Gradient Descent)",
         options=[0.001, 0.005, 0.01, 0.02, 0.05, 0.1],
-        value=0.05,
+        value=0.001,
         key="tab3_lr",
     )
     reg = col_p3.select_slider(
         "Regularisasi LSE (Lambda)",
         options=[0.0001, 0.001, 0.01, 0.1],
-        value=0.001,
+        value=0.1,
         key="tab3_reg",
     )
 
